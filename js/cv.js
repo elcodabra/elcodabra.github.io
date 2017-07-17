@@ -22,7 +22,7 @@ var mainNote = svg.append("text")
     .text(function(d) {return "CV / Alexander Konovalov";});
 
 
-d3.json("main_bubble.json", function(error, root) {
+d3.json("../js/main_bubble.json", function(error, root) {
     console.log(error);
 
     var bubbleObj = svg.selectAll(".topBubble")
