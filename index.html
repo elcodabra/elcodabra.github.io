@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>My Resume</title>
+    <title>Alexander Konovalov / Full-Stack Developer & Expert & Coach</title>
     <link rel="stylesheet" href="css/resume.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Nunito:light,normal|Montserrat">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
@@ -11,13 +11,19 @@
 <body>
     <header>
         <div class="title">
-            <span class="tags">&lt;full-stack-developer&gt;</span>
-            <h1>Alexander Konovalov</h1>
-            <span class="tags">&lt;full-stack-developer/&gt;</span>
+            <div class="open-tags">
+                <span class="tags">&lt;full-stack-developer&gt;</span>
+                <h1>Alexander Konovalov</h1>
+                <span class="tags">&lt;/full-stack-developer&gt;</span>
+            </div>
+            <div class="close-tags">
+                <span class="tags">&lt;full-stack-developer/&gt;</span>
+            </div>
         </div>
         <div class="header-limiter">
             <ul>
                 <li><a href="#about">#about</a></li>
+                <li><a href="#courses">#courses</a></li>
                 <li><a href="#skills">#skills</a></li>
                 <li><a href="#opensource">#opensource</a></li>
                 <li><a href="#experience">#experience</a></li>
@@ -30,25 +36,77 @@
             <h1>&lt;About Me /&gt;</h1>
             <div class="card-description">
                 <div>My name is Alexander Konovalov</div>
-                <div><span class="infoNumbers">27</span> years, Moscow</div>
-                <div><span class="infoNumbers">&gt;5</span> years in IT</div>
-                <div>It is not full cv. I have more skills and experience, but main that</div>
+                <div><span class="infoNumbers" id="ye">27</span> years, Moscow</div>
+                <div><span class="infoNumbers" id="it">&gt;5</span> years in IT</div>
+                <i>TODO: </i>My notes and articles about development process
+                <i>FEATURE: </i>Github latest commits
             </div>
         </div>
+
+        <div class="card" id="courses">
+            <h1>&lt;My Courses /&gt;</h1>
+            <div class="card-description">
+                Lectures with test and practice
+                <div>
+                    For Seniors:
+                    <ul>
+                        <li>Funny JS #1 - Preview & Link</li>
+                        <li>Funny JS #2 - Preview & Link</li>
+                    </ul>
+                </div>
+                <div>
+                    For Beginners:
+                    <ul>
+                        <li>JS: Basics</li>
+                        <li>Node JS + MongoDB</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
         <div class="card" id="skills">
             <h1>&lt;Skills /&gt;</h1>
+            <div class="card-description">
+                <ul>
+                    <!-- https://bl.ocks.org/mbostock/4063269 -->
+                    <li>Frontend: JS, JQuery, AngularJS, Angular4, React, Typescript, HTML5, CSS3, ES6, SASS</li>
+                    <li>Backend: NodeJS, Java,  </li>
+                    <li>Databases: MongoDB, PL/SQL, PostgreSQL, MySQL</li>
+                    <li>Testing: Karma, Mocha, Chai, Jasmine</li>
+                    <li>CI: Jenkins</li>
+                </ul>
+            </div>
         </div>
+
         <div class="card" id="opensource">
             <h1>&lt;Open Source /&gt;</h1>
             <div class="card-description">
-
+                <ul>
+                    <li>text-to-learn</li>
+                    <li>smart-links</li>
+                    <li>smm-bot</li>
+                    <li>slides-and-forms</li>
+                    <li>photo-location</li>
+                </ul>
             </div>
         </div>
+
         <div class="card" id="experience">
             <h1>&lt;Experience /&gt;</h1>
+            <div class="card-description">
+                Work and more work
+            </div>
         </div>
+
         <div class="card" id="education">
             <h1>&lt;Education /&gt;</h1>
+            <div class="card-description">
+                <ul>
+                    <li>University</li>
+                    <li>Courses</li>
+                    <li>Certificates</li>
+                </ul>
+            </div>
         </div>
     </section>
     <footer>
@@ -60,10 +118,14 @@
                 <a href="https://sani-banani.github.io"><i class="fa fa-github"></i></a>
             </div>
             <div class="footer-left">
-                <p class="footer-links">Contact</p>
                 <p>Alexander Konovalov © 2017</p>
             </div>
         </div>
     </footer>
+
+    <script>
+        document.getElementById('ye').innerText = (+new Date().getFullYear() - 1988).toString();
+        document.getElementById('it').innerText = '>' + (+new Date().getFullYear() - 2008 - 1).toString();
+    </script>
 </body>
 </html>

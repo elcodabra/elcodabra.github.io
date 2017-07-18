@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 
+/* TODO: add background video with workspace and JS Book */
 html{
     height: 100%;
     color: #F3F4F5;
@@ -38,7 +39,7 @@ h1 {
 header {
     background-color: #27313C;
     box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.15);
-    padding: 20px 40px;
+    padding: 10px 40px;
     box-sizing: border-box;
 }
 
@@ -47,7 +48,11 @@ header .title {
     padding-bottom: 15px;
 }
 
-header .title .tags {
+header .title .close-tags {
+    display: none;
+}
+
+.tags {
     font-family: monospace;
     color: #E8BF6A;
 }
@@ -145,7 +150,7 @@ header .header-limiter nav a.selected {
 
 .main-content{
     color: #525252;
-    padding: 60px 50px;
+    padding: 20px 50px;
 }
 
 .card {
@@ -229,12 +234,16 @@ footer{
     text-align: left;
     font: normal 16px sans-serif;
 
-    padding: 15px 50px;
+    padding: 5px 50px;
 }
 
 footer .footer-limiter {
     max-width: 880px;
     margin: 0 auto;
+}
+
+footer .footer-left {
+    padding: 10px 0;
 }
 
 footer .footer-left p{
@@ -262,7 +271,8 @@ footer p.footer-links a{
 
 footer .footer-right{
     float: right;
-    margin-top: 6px;
+    margin-top: 1px;
+    padding-right: 8px;
     max-width: 180px;
 }
 
