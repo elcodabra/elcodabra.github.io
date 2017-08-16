@@ -26,10 +26,10 @@ footer{
     flex: 0 0 auto;
 }
 
-h1 {
+h1, .h1 {
     font-family: "Nunito", serif;
     font-weight: 300;
-    /*font-variant: small-caps;*/
+    font-size: 2em;
 }
 
 /*-------------
@@ -48,6 +48,12 @@ header .title {
     padding-bottom: 15px;
 }
 
+header .title .open-tags {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 header .title .close-tags {
     display: none;
 }
@@ -55,6 +61,7 @@ header .title .close-tags {
 .tags {
     font-family: monospace;
     color: #E8BF6A;
+    padding: 10px 5px 5px;
 }
 
 header .header-limiter {
@@ -158,7 +165,7 @@ header .header-limiter nav a.selected {
     margin: 0 auto;
     background-color: #fff;
     height: 100%;
-    padding: 60px 90px;
+    padding: 50px;
     text-align: center;
 }
 
@@ -214,8 +221,13 @@ header .header-limiter nav a.selected {
     margin-bottom: 40px;
 }
 
+.card .card-description {
+    font-family: Roboto;
+    font-size: 16px;
+}
+
 .card .card-description .infoNumbers{
-    font-family: Avenir;
+    font-family: Montserrat;
     font-size: x-large;
 }
 

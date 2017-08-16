@@ -2,19 +2,20 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Alexander Konovalov / Full-Stack Developer & Expert & Coach</title>
+    <title>Alexander Konovalov / Full-Stack Developer</title>
     <link rel="stylesheet" href="css/resume.css">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Nunito:light,normal|Montserrat">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Nunito:light,normal|Montserrat|Roboto:light">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <link rel="SHORTCUT ICON" href="images/beard-and-glasses.jpg">
+    <script type="text/javascript" src="https://d3js.org/d3.v3.min.js"></script>
 </head>
 <body>
     <header>
         <div class="title">
             <div class="open-tags">
-                <span class="tags">&lt;full-stack-developer&gt;</span>
-                <h1>Alexander Konovalov</h1>
-                <span class="tags">&lt;/full-stack-developer&gt;</span>
+                <p class="tags">&lt;full-stack-developer&gt;</p>
+                <p class="h1">Alexander Konovalov</p>
+                <p class="tags">&lt;/full-stack-developer&gt;</p>
             </div>
             <div class="close-tags">
                 <span class="tags">&lt;full-stack-developer/&gt;</span>
@@ -94,7 +95,7 @@
         <div class="card" id="experience">
             <h1>&lt;Experience /&gt;</h1>
             <div class="card-description">
-                Work and more work
+                <div id="mainBubble"></div>
             </div>
         </div>
 
@@ -127,5 +128,6 @@
         document.getElementById('ye').innerText = (+new Date().getFullYear() - 1988).toString();
         document.getElementById('it').innerText = '>' + (+new Date().getFullYear() - 2008 - 1).toString();
     </script>
+    <script src="./js/cv.js" type="text/javascript" charset="utf-8-8"></script>
 </body>
 </html>

@@ -1,33 +1,109 @@
-{"name":"bubble", "children": [
-  {"name":"2016","description":"Atlas of Global Agriculture", "image": "../../images/hipster.png",
-    "children":[
-      {"name": "Angular JS","address":"http://gli.environment.umn.edu", "note":"Global crop geography, including precipitation, temperature, crop area, etc."},
-      {"name": "Node JS","address":"http://d3js.org"},
-      {"name": "CSS","address":"http://environment.umn.edu", "note":"Maize, wheat, rice, and soybean yields in 2000"}
-    ]},
-  {"name": "2014", "description": "Virtual Lab of Global Agriculture", "image": "../../images/lamber.png",
-    "children":[
-      {"name":"Excess Nutrient","address":"http://d3js.org","note":"Prototype Infographics on Excess Fertilizer Nutrients"},
-      {"name":"Yield Gap","address":"http://d3js.org", "note":"The gap between attainable yields and actual yields, with modeled yields assuming the percentage of gap closed."},
-      {"name":"Fertilizer","address":"http://sunsp.net"}
-    ]},
-  {"name":"2013", "description":"Profiles of Country", "image": "../../images/lamber.png",
-    "children":[
-      {"name":"Efficiency","address":"http://d3js.org"},
-      {"name":"Excess Nutrient","address":"http://d3js.org"},
-      {"name":"Economy","address":"http://d3js.org"},
-      {"name":"Agriculture","address":"http://uis.edu/ens"}
-    ]},
-  {"name":"2012", "description":"Crop Data in 5 minutes grid", "image": "../../images/beard-and-glasses.jpg",
-    "children":[
-      {"name":"Geography","address":"http://www.earthstat.org/"},
-      {"name":"Crop Land","address":"http://www.earthstat.org/"},
-      {"name":"Crop Yields","address":"http://www.earthstat.org/"}
-    ]},
-  {"name":"2010", "description":"Crop Data in 5 minutes grid", "image": "../../images/beard-and-glasses.jpg",
-    "children":[
-      {"name":"Geography","address":"http://www.earthstat.org/"},
-      {"name":"Crop Land","address":"http://www.earthstat.org/"},
-      {"name":"Crop Yields","address":"http://www.earthstat.org/"}
-    ]}
-]}
+{
+  "name": "bubble",
+  "children": [
+    {
+      "name": "2017",
+      "description": "Expert at AT-Consulting",
+      "image": "../../images/master.png",
+      "children": [
+        {
+          "name": "Angular 4"
+        },
+        {
+          "name": "ES6"
+        },
+        {
+          "name": "Webpack"
+        },
+        {
+          "name": "Node JS"
+        }
+      ]
+    },
+    {
+      "name": "2016",
+      "description": "Expert at AT-Consulting",
+      "image": "../../images/master.png",
+      "children": [
+        {
+          "name": "AngularJS"
+        },
+        {
+          "name": "ES6"
+        },
+        {
+          "name": "Gulp"
+        },
+        {
+          "name": "Unit testing"
+        }
+      ]
+    },
+    {
+      "name": "2014",
+      "description": "Lead Developer at AT-Consulting",
+      "image": "../../images/lead.png",
+      "children": [
+        {
+          "name": "AngularJS"
+        },
+        {
+          "name": "Unti testing"
+        },
+        {
+          "name": "Grunt"
+        },
+        {
+          "name": "Node JS"
+        }
+      ]
+    },
+    {
+      "name": "2013",
+      "description": "Lead Developer at AT-Consulting",
+      "image": "../../images/lead.png",
+      "children": [
+        {
+          "name": "JQuery"
+        },
+        {
+          "name": "Require JS"
+        },
+        {
+          "name": "ArgGIS API"
+        },
+        {
+          "name": "Bootstrap"
+        },
+        {
+          "name": "Rest API"
+        },
+        {
+          "name": "Oracle Spatial"
+        }
+      ]
+    },
+    {
+      "name": "2011",
+      "description": "Developer at AT-Consulting",
+      "image": "../../images/dev.png",
+      "children": [
+        {
+          "name": "Java EE"
+        },
+        {
+          "name": "Spring"
+        },
+        {
+          "name": "Freemarker"
+        },
+        {
+          "name": "SOAP"
+        },
+        {
+          "name": "PL/SQL"
+        }
+      ]
+    }
+  ]
+}

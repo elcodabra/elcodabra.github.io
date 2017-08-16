@@ -1,4 +1,4 @@
-var w = window.innerWidth; //0.68*0.95;
+var w = 780; //0.68*0.95;
 var h = Math.ceil(w*0.7);
 var oR = 0;
 var nTop = 0;
@@ -19,10 +19,10 @@ var mainNote = svg.append("text")
     .attr("dominant-baseline", "middle")
     .attr("alignment-baseline", "middle")
     //.style("fill", "#888888")
-    .text(function(d) {return "CV / Alexander Konovalov";});
+    .text(function(d) {return "Experience / Alexander Konovalov";});
 
 
-d3.json("../js/main_bubble.json", function(error, root) {
+d3.json("./js/main_bubble.json", function(error, root) {
     console.log(error);
 
     var bubbleObj = svg.selectAll(".topBubble")
@@ -65,9 +65,9 @@ d3.json("../js/main_bubble.json", function(error, root) {
         .attr("r", function(d) { return oR; })
         .attr("cx", function(d, i) {return oR*(3*(1+i)-1);})
         .attr("cy", (h+oR)/3)
-        .style("fill", function(d, i) { return "url(#image" + i + ")"; }) // #1f77b4
-        //.style("fill", function(d,i) { return colVals(i); }) // #1f77b4
-        //.style("opacity",0.3)
+        //.style("fill", function(d, i) { return "url(#image" + i + ")"; }) // #1f77b4
+        .style("fill", function(d,i) { return colVals(i); }) // #1f77b4
+        .style("opacity",0.3)
         .on("mouseover", function(d,i) {return activateBubble(d,i);});
 
 
@@ -101,9 +101,11 @@ d3.json("../js/main_bubble.json", function(error, root) {
             .attr("cursor","pointer")
             .style("opacity",0.5)
             .style("fill", "#eee")
+            /*
             .on("click", function(d,i) {
                 window.open(d.address);
             })
+            */
             .on("mouseover", function(d,i) {
                 //window.alert("say something");
                 var noteText = "";
@@ -129,9 +131,10 @@ d3.json("../js/main_bubble.json", function(error, root) {
             .attr("dominant-baseline", "middle")
             .attr("alignment-baseline", "middle")
             .text(function(d) {return d.name})
-            .on("click", function(d,i) {
+            /*.on("click", function(d,i) {
                 window.open(d.address);
             });
+            */
 
     }
 
@@ -139,7 +142,7 @@ d3.json("../js/main_bubble.json", function(error, root) {
 });
 
 resetBubbles = function () {
-    w = window.innerWidth - 50;//*0.68*0.95;
+    w = 780;
     oR = w/(1+3*nTop);
 
     h = Math.ceil(w/nTop*2);
@@ -150,7 +153,7 @@ resetBubbles = function () {
     svg.attr("width", w);
     svg.attr("height",h);
 
-    d3.select("#bubbleItemNote").text("CV / Alexander Konovalov");
+    d3.select("#bubbleItemNote").text("Experience / Alexander Konovalov");
 
     var t = svg.transition()
         .duration(650);
@@ -187,6 +190,8 @@ function activateBubble(d,i) {
     // increase this bubble and decrease others
     var t = svg.transition()
         .duration(d3.event.altKey ? 7500 : 350);
+
+    d3.select("#bubbleItemNote").text(d.description);
 
     t.selectAll(".topBubble")
         .attr("cx", function(d,ii){
