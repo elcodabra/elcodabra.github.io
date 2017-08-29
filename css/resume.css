@@ -165,8 +165,12 @@ header .header-limiter nav a.selected {
     margin: 0 auto;
     background-color: #fff;
     height: 100%;
-    padding: 50px;
+    padding: 50px 50px 0;
     text-align: center;
+}
+
+.card:last-child {
+    padding-bottom: 50px;
 }
 
 /*
@@ -191,13 +195,18 @@ header .header-limiter nav a.selected {
     font-size: 16px;
     max-width: 600px;
     line-height: 1.6;
-    margin: 0 auto 35px;
+    margin: 0 auto;
 }
 
 .card p{
     text-align: left;
     margin: 20px 0 40px;
     line-height: 1.5;
+}
+
+.card #skillsChart{
+    font-size: 14px;
+    font-family: Montserrat;
 }
 
 .card #add-content{

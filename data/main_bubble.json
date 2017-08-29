@@ -10,6 +10,9 @@
           "name": "Angular 4"
         },
         {
+          "name": "Typescript"
+        },
+        {
           "name": "ES6"
         },
         {
@@ -35,7 +38,13 @@
           "name": "Gulp"
         },
         {
-          "name": "Unit testing"
+          "name": "Karma"
+        },
+        {
+          "name": "Mocha"
+        },
+        {
+          "name": "Jasmine"
         }
       ]
     },

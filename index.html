@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Nunito:light,normal|Montserrat|Roboto:light">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <link rel="SHORTCUT ICON" href="images/beard-and-glasses.jpg">
-    <script type="text/javascript" src="https://d3js.org/d3.v3.min.js"></script>
+    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
 </head>
 <body>
     <header>
@@ -28,7 +28,7 @@
                 <li><a href="#skills">#skills</a></li>
                 <li><a href="#opensource">#opensource</a></li>
                 <li><a href="#experience">#experience</a></li>
-                <li><a href="#education">#education</a></li>
+                <!--<li><a href="#education">#education</a></li>-->
             </ul>
         </div>
     </header>
@@ -68,14 +68,7 @@
         <div class="card" id="skills">
             <h1>&lt;Skills /&gt;</h1>
             <div class="card-description">
-                <ul>
-                    <!-- https://bl.ocks.org/mbostock/4063269 -->
-                    <li>Frontend: JS, JQuery, AngularJS, Angular4, React, Typescript, HTML5, CSS3, ES6, SASS</li>
-                    <li>Backend: NodeJS, Java,  </li>
-                    <li>Databases: MongoDB, PL/SQL, PostgreSQL, MySQL</li>
-                    <li>Testing: Karma, Mocha, Chai, Jasmine</li>
-                    <li>CI: Jenkins</li>
-                </ul>
+                <div id="skillsChart"></div>
             </div>
         </div>
 
@@ -95,10 +88,12 @@
         <div class="card" id="experience">
             <h1>&lt;Experience /&gt;</h1>
             <div class="card-description">
-                <div id="mainBubble"></div>
+                <div id="expBubble"></div>
+                <h3 id="experience-note">Navigate to Experience</h3>
             </div>
         </div>
 
+        <!--
         <div class="card" id="education">
             <h1>&lt;Education /&gt;</h1>
             <div class="card-description">
@@ -109,6 +104,7 @@
                 </ul>
             </div>
         </div>
+        -->
     </section>
     <footer>
         <div class="footer-limiter">
@@ -128,6 +124,7 @@
         document.getElementById('ye').innerText = (+new Date().getFullYear() - 1988).toString();
         document.getElementById('it').innerText = '>' + (+new Date().getFullYear() - 2008 - 1).toString();
     </script>
-    <script src="./js/cv.js" type="text/javascript" charset="utf-8-8"></script>
+    <script src="./js/skills.js" type="text/javascript" charset="utf-8-8"></script>
+    <script src="./js/experience.js" type="text/javascript" charset="utf-8-8"></script>
 </body>
 </html>
