@@ -1,0 +1,118 @@
+{
+  "name": "bubble",
+  "children": [
+    {
+      "name": "2017",
+      "description": "Expert at AT-Consulting",
+      "image": "../../images/master.png",
+      "children": [
+        {
+          "name": "Angular 4"
+        },
+        {
+          "name": "Typescript"
+        },
+        {
+          "name": "ES6"
+        },
+        {
+          "name": "Webpack"
+        },
+        {
+          "name": "Node JS"
+        }
+      ]
+    },
+    {
+      "name": "2016",
+      "description": "Expert at AT-Consulting",
+      "image": "../../images/master.png",
+      "children": [
+        {
+          "name": "AngularJS"
+        },
+        {
+          "name": "ES6"
+        },
+        {
+          "name": "Gulp"
+        },
+        {
+          "name": "Karma"
+        },
+        {
+          "name": "Mocha"
+        },
+        {
+          "name": "Jasmine"
+        }
+      ]
+    },
+    {
+      "name": "2014",
+      "description": "Lead Developer at AT-Consulting",
+      "image": "../../images/lead.png",
+      "children": [
+        {
+          "name": "AngularJS"
+        },
+        {
+          "name": "Unti testing"
+        },
+        {
+          "name": "Grunt"
+        },
+        {
+          "name": "Node JS"
+        }
+      ]
+    },
+    {
+      "name": "2013",
+      "description": "Lead Developer at AT-Consulting",
+      "image": "../../images/lead.png",
+      "children": [
+        {
+          "name": "JQuery"
+        },
+        {
+          "name": "Require JS"
+        },
+        {
+          "name": "ArgGIS API"
+        },
+        {
+          "name": "Bootstrap"
+        },
+        {
+          "name": "Rest API"
+        },
+        {
+          "name": "Oracle Spatial"
+        }
+      ]
+    },
+    {
+      "name": "2011",
+      "description": "Developer at AT-Consulting",
+      "image": "../../images/dev.png",
+      "children": [
+        {
+          "name": "Java EE"
+        },
+        {
+          "name": "Spring"
+        },
+        {
+          "name": "Freemarker"
+        },
+        {
+          "name": "SOAP"
+        },
+        {
+          "name": "PL/SQL"
+        }
+      ]
+    }
+  ]
+}

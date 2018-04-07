@@ -1,0 +1,35 @@
+id,value
+skills,
+skills.frontend,
+skills.frontend.AngularJS, 52
+skills.frontend.Angular4, 40
+skills.frontend.Typescript, 44
+skills.frontend.React, 24
+skills.frontend.html5, 16
+skills.frontend.css3, 16
+skills.frontend.jquery, 48
+skills.frontend.es6, 24
+skills.frontend.sass, 12
+skills.backend,
+skills.backend.JavaEE, 36
+skills.backend.NodeJS, 24
+skills.db,
+skills.db.mysql, 18
+skills.db.mongo, 28
+skills.db.pl/sql, 24
+skills.db.postgres, 32
+skills.testing,
+skills.testing.Karma, 24
+skills.testing.Mocha, 18
+skills.testing.Chai, 18
+skills.testing.Jasmine, 32
+skills.testing.Tdd, 15
+skills.testing.Bdd, 10
+skills.ci.Jenkins, 36
+skills.couching,
+skills.couching.FunnyJS, 42
+skills.couching.BasicJS, 24
+skills.Mentor, 24
+skills.vc,
+skills.vc.GIT, 24
+skills.vc.SVN, 24
