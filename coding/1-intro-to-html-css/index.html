@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Введение в HTML & CSS</title>
+    <!-- <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/monokai.min.css" /> -->
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/solarized-dark.min.css" />
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+    <style>
+      body {
+        background-color: black;
+        font-family: monaco, monospace;
+      }
+      header {
+        padding-top: 80px;
+        text-align: center;
+        background: url(http://media.giphy.com/media/Jrd9E2kuPuOYM/giphy.gif)
+          50% no-repeat;
+        background-size: cover;
+        height: 800px;
+      }
+      h1,
+      h2 {
+        display: inline-block;
+        background: #fff;
+      }
+      h1 {
+        font-size: 30px;
+      }
+      h2 {
+        font-size: 20px;
+      }
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+      main {
+        padding: 20px;
+      }
+
+      .image {
+        padding: 10px 50px;
+        text-align: center;
+      }
+      .yellow {
+        background: #fd0;
+      }
+      .example {
+        background-color:#fff;
+        padding: 15px;
+        margin-bottom: 25px;
+      }
+      .comment::before {
+        content: 'Задание:'
+      }
+      .comment {
+        background-color:#fff;
+        padding: 15px;
+        color: green;
+        margin: 50px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>Welcome to <span class="yellow">Coding</span></h1>
+      <br />
+      <h2>Intro to HTML & CSS</h2>
+    </header>
+
+    <main>
+      <h1>Введение в <span class="yellow">HTML</span></h1>
+      <section id="1">
+        <h2>Тэг</h2>
+        <!--
+          Открывающий тэг и закрывающий тег, принцип матрешки, вложенные тэги
+        -->
+        <div class="image">
+          <img src="./img/tag.jpg" />
+        </div>  
+      </section>    
+      <section>
+        <h2>Структура HTML</h2>
+        <!--
+          Элементы, находящиеся внутри тега <html>, образуют дерево документа, 
+          так называемую объектную модель документа, DOM (document object model). 
+          При этом элемент <html> является корневым элементом.
+
+          HTML is organized as a collection of family tree relationships. As you saw in the last exercise, we placed <p> tags within <body> tags. When an element is contained inside another element, it is considered the child of that element. The child element is said to be nested inside of the parentelement.
+
+          <body>
+            <p>This paragraph is a child of the body</p>
+          </body>
+          In the example above, the <p> element is nested inside the <body> element. The <p> element is considered a child of the <body> element, and the <body> element is considered the parent. You can also see that we've added two spaces of indentation (using the space bar) for better readability.
+          Since there can be multiple levels of nesting, this analogy can be extended to grandchildren, great-grandchildren, and beyond. The relationship between elements and their ancestor and descendent elements is known as hierarchy.
+          Let's consider a more complicated example that uses some new tags:
+          <body>
+            <div>
+              <h1>Sibling to p, but also grandchild of body</h1>
+              <p>Sibling to h1, but also grandchild of body</p>
+            </div>
+          </body>
+          In this example, the <body> element is the parent of the <div> element. Both the <h1> and <p>elements are children of the <div> element. Because the <h1> and <p> elements are at the same level, they are considered siblings and are both grandchildren of the <body> element.
+          Understanding HTML hierarchy is important because child elements can inherit behavior and styling from their parent element. You'll learn more about webpage hierarchy in when you start digging into CSS.
+        -->
+        <div class="image">
+          <img src="./img/dom.png" />
+        </div>  
+        <pre>
+          <code class="html">
+            &lt;!DOCTYPE html&gt; &lt;!-- Объявление формата документа --&gt;
+            &lt;html&gt;
+              &lt;head&gt; &lt;!-- Техническая информация о документе --&gt;
+                &lt;meta charset=&quot;UTF-8&quot;&gt; &lt;!-- Определяем кодировку символов документа --&gt;
+                &lt;title&gt;...&lt;/title&gt; &lt;!-- Задаем заголовок документа --&gt;
+                &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;style.css&quot;&gt; &lt;!-- Подключаем внешнюю таблицу стилей --&gt;
+                &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt; &lt;!-- Подключаем сценарии --&gt;
+              &lt;/head&gt;
+              &lt;body&gt; &lt;!-- Основная часть документа --&gt;
+              &lt;/body&gt;
+            &lt;/html&gt;
+          </code>
+        </pre>
+      </section>
+
+      <section id="2">
+        <h2>Тэг &lt;body&gt;</h2>
+        <!--
+          One of the key HTML elements we use to build a webpage is the body element. Only content inside the opening and closing body tags can be displayed to the screen. Here's what opening and closing body tags look like:
+          <body>
+
+          </body>
+          Once the file has a body, many different types of content – including text, images, and buttons – can be added to the body.
+          <body>
+            <p>What's up, doc?</p>
+          </body>
+
+          Add a body to your web page using the <body> element.
+        -->
+        <pre>  
+          <code class="html">
+              &lt;body&gt;
+                &lt;p checked class=&quot;title&quot; id=&apos;title&apos;&gt;Title&lt;/p&gt;
+                &lt;!-- here goes the rest of the page --&gt;
+              &lt;/body&gt;
+          </code>
+        </pre>
+        <!-- 
+          Задание: 
+        -->
+        <div class="comment">&lt;!-- Создайте тег body с вложенным элементом p с текстом "Здесь должен быть текст содержания" --&gt;</div>
+      </section>
+
+      <section id="3">
+        <h2>Заголовки</h2>
+        <!--
+          Headings in HTML are similar to headings in other types of media. For example, in newspapers, large headings are typically used to capture a reader's attention. Other times, headings are used to describe content, like the title of a movie or an educational article.
+          HTML follows a similar pattern. In HTML, there are six different headings, or heading elements. Headings can be used for a variety of purposes, like titling sections, articles, or other forms of content.
+          The following is the list of heading elements available in HTML. They are ordered from largest to smallest in size.
+          * <h1> — used for main headings. All other smaller headings are used for subheadings.
+          * <h2>
+          * <h3>
+          * <h4>
+          * <h5>
+          * <h6>
+          The following example code uses a headline intended to capture a reader's attention. It uses the largest heading available, the main heading element:
+        -->
+        <pre>  
+          <code class="html">
+              &lt;h1&gt;Заголовок 1&lt;/h1&gt;
+              &lt;h2&gt;Заголовок 2&lt;/h2&gt;
+          </code>
+        </pre>
+        <!-- 
+          Задание: 
+        -->
+        <div class="comment">
+          &lt;!-- 
+            Продолжите список заголовков. На каком заголовке не будет меняться стиль текста? 
+          --&gt;
+        </div>
+        
+        <div class="example">
+           <h1>Заголовок1</h1>
+           <h5>aaa</h5> 
+           <h6>aaa6</h6> 
+           <h7>aaa7</h7> 
+           <h8>aaa8</h8> 
+           <h9>aaa</h9>
+        </div>
+      </section>
+
+      <section id="4">
+        <h2>Div</h2>
+        <!--
+          One of the most popular elements in HTML is the <div> element. <div> is short for "division" or a container that divides the page into sections. These sections are very useful for grouping elements in your HTML together.
+          <body>
+            <div>
+              <h1>Why use divs?</h1>
+              <p>Great for grouping elements!</p>
+            </div>
+          </body>
+          <div>s can contain any text or other HTML elements, such as links, images, or videos. Remember to always add two spaces of indentation when you nest elements inside of <div>s for better readability.
+        -->
+        <pre>  
+          <code class="html">
+            &lt;body&gt;
+              &lt;div&gt;
+                &lt;h1&gt;Why use divs?&lt;/h1&gt;
+                &lt;p&gt;Great for grouping elements!&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/body&gt;
+          </code>
+        </pre>
+        <!-- 
+          Задание: 
+        -->
+        <div class="comment">
+          &lt;!-- 
+            Сгруппируйте h2 и p в div. Тег h2 напишите "Группа элементов"
+          --&gt;
+        </div>
+
+        <div id="main" class="example" style="color:red">
+          <h1>Заголовок1</h1>
+          <h5>aaa</h5> 
+          <h6>aaa6</h6> 
+          <h7>aaa7</h7> 
+          <h8>aaa8</h8> 
+          <h9>aaa</h9>
+        </div>
+      </section>
+
+      <section id="5">
+        <h2>Атрибуты</h2>
+        <!--
+          If we want to expand an element's tag, we can do so using an attribute. Attributes are content added to the opening tag of an element and can be used in several different ways, from providing information to changing styling. Attributes are made up of the following two parts:
+          * 		The name of the attribute
+          * 		The value of the attribute
+          One commonly used attribute is the id. We can use the id attribute to specify different content (such as <div>s) and is really helpful when you use an element more than once. ids have several different purposes in HTML, but for now, we'll focus on how they can help us identify content on our page.
+          When we add an id to a <div>, we place it in the opening tag:
+          <div id="intro">
+            <h1>Introduction</h1>
+          </div>
+        -->
+        <pre>  
+          <code class="html">
+            &lt;div id=&quot;intro&quot;&gt;
+              &lt;h1&gt;Introduction&lt;/h1&gt;
+            &lt;/div&gt;
+          </code>
+        </pre>
+        <!-- 
+          Задание: 
+        -->
+        <div class="comment">
+          &lt;!-- 
+            Добавить атрибут id, class, style
+          --&gt;
+        </div>
+      </section>
+
+      <section id="6">
+        <h2>Отображение текста</h2>
+        <!--
+          If you want to display text in HTML, you can use a paragraph or span:
+          * 		Paragraphs (<p>) contain a block of plain text.
+          * 		<span> contains short pieces of text or other HTML. They are used to separate small pieces of content that are on the same line as other content.
+        -->
+        <pre>  
+          <code class="html">
+            &lt;div&gt;
+              &lt;p&gt;Параграф 1&lt;/p&gt;
+              &lt;span&gt;Текст 1.1&lt;/span&gt;
+              &lt;span&gt;Текст 1.2&lt;/span&gt;
+              &lt;span&gt;Текст 1.3&lt;/span&gt;
+              &lt;p&gt;Параграф 2&lt;/p&gt;
+              &lt;span&gt;Текст 2.1&lt;/span&gt;
+              &lt;span&gt;Текст 2.2&lt;/span&gt;
+              &lt;span&gt;Текст 2.3&lt;/span&gt;
+            &lt;/div&gt;
+          </code>
+        </pre>
+        <div class="example">
+          <div>
+            <p>Параграф 1</p>
+            <span style="color:red;font-weight:bold;">Текст 1.1</span>
+            <span>Текст 1.2</span>
+            <span>Текст 1.3</span>
+            <p>Параграф 2</p>
+            <span>Текст 2.1</span>
+            <span>Текст 2.2</span>
+            <span>Текст 2.3</span>
+          </div>
+        </div>
+        <!-- TODO:
+          Задание: 
+        -->
+        <div class="comment">
+          &lt;!-- 
+            Напишите текст, используя параграфы и спаны.
+          --&gt;
+        </div>
+      </section>
+
+      <section id="7">
+        <h2>Стилизация текста</h2>
+        <!--
+          You can also style text using HTML tags. The <em>tag emphasizes text, while the <strong> tag highlights important text.
+          Later, when you begin to style websites, you will decide how you want browsers to display content within <em> and <strong> tags. Browsers, however, have built-in style sheets that will generally style these tags in the following ways:
+          * 		The <em> tag will generally render as italicemphasis.
+          * 		The <strong> will generally render as boldemphasis.
+          Take a look at each style in action:
+          <p><strong>The Nile River</strong> is the <em>longest</em> river in the world, measuring over 6,850 kilometers long (approximately 4,260 miles).</p>
+        -->
+        <pre>  
+          <code class="html">
+            &lt;p&gt;&lt;strong&gt;The Nile River&lt;/strong&gt; is the &lt;em&gt;longest&lt;/em&gt; river in the world, measuring over 6,850 kilometers long (approximately 4,260 miles).&lt;/p&gt;
+          </code>
+        </pre>
+
+        <div class="example">
+            <p><strong>The Nile River</strong> is the <em>longest</em> river in the world, measuring over 6,850 kilometers long (approximately 4,260 miles).</p>  
+        </div>
+        <!-- TODO:
+          Задание: 
+        -->
+        <div class="comment">
+          &lt;!-- 
+            Напишите текст, используя стилизацию
+          --&gt;
+        </div>
+      </section>
+
+      <section id="8">
+        <h2>Ненумерованные списки</h2>
+        <!--
+          In addition to organizing text in paragraph form, you can also display content in an easy-to-read list.
+          In HTML, you can use an unordered list tag (<ul>) to create a list of items in no particular order. An unordered list outlines individual list items with a bullet point.
+          The <ol> element should not hold raw text and won't automatically format raw text into an unordered list of items. Individual list items must be added to the unordered list using the <li> tag. The <li> or list item tag is used to describe an item in a list.
+          <ul>
+            <li>Limes</li>
+            <li>Tortillas</li>
+            <li>Chicken</li>
+          </ul>
+        -->
+        <pre>  
+          <code class="html">
+            &lt;ul&gt;
+              &lt;li&gt;HTML&lt;/li&gt;
+              &lt;li&gt;CSS&lt;/li&gt;
+              &lt;li&gt;JS&lt;/li&gt;
+            &lt;/ul&gt;
+          </code>
+        </pre>
+      
+        <div class="example">
+          <ul style="list-style: none">
+            <li>HTML</li>
+            <li>CSS</li>
+            <ul>
+                <li>1</li>
+                <ul>
+                    <li>1</li>
+                    <ul>
+                        <li>1</li>
+                        <li>2</li>
+                      </ul>
+                    <li>2</li>
+                  </ul>
+                <li>2</li>
+              </ul>
+            <li>JS</li>
+          </ul>
+        </div>
+        <!-- 
+          Задание: TODO
+        -->
+        <div class="comment">
+          &lt;!-- 
+            Сделайте список из элементов 
+          --&gt;
+        </div>
+      </section>
+
+      <section id="9">
+        <h2>Нумерованные списки</h2>
+        <!--
+          Ordered lists (<ol>) are like unordered lists, except that each list item is numbered. They are useful when you need to list different steps in a process or rank items for first to last.
+          You can create the ordered list with the <ol> tag and then add individual list items to the list using <li>tags.
+          <ol>
+            <li>Preheat the oven to 350 degrees.</li>
+            <li>Mix whole wheat flour, baking soda, and salt.</li>
+            <li>Cream the butter, sugar in separate bowl.</li>
+            <li>Add eggs and vanilla extract to bowl.</li>
+          </ol>
+        -->
+        <pre>  
+          <code class="html">
+            &lt;ol&gt;
+              &lt;li&gt;HTML&lt;/li&gt;
+              &lt;li&gt;CSS&lt;/li&gt;
+              &lt;li&gt;JS&lt;/li&gt;
+            &lt;/ol&gt;
+          </code>
+        </pre>
+      
+        <div class="example">
+          <ol>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JS</li>
+            <ol>
+                <li>React</li>
+                <ol>
+                    <li>Redux</li>
+                    <ol>
+                        <li>1</li>
+                        <li>2</li>
+                      </ol>
+                    <li>Router</li>
+                  </ol>
+                <li>Angular</li>
+              </ol>
+            </ol>  
+          </ol>
+        </div>
+        <!-- 
+          Задание:
+        -->
+        <div class="comment">
+          &lt;!-- 
+            Переделайте старый список в нумерованный
+          --&gt;
+        </div>
+      </section>
+
+      <section id="10">
+        <h2>Изображения</h2>
+        <!--
+          All of the elements you've learned about so far (headings, paragraphs, lists, and spans) share one thing in common: they're composed entirely of text! What if you want to add content to your web page that isn't composed of text, like images?
+          The <img> tag allows you to add an image to a web page. Most elements require both opening and closing tags, but the <img> tag is a self-closing tag. Note that the end of the <img> tag has a forward slash /. Self-closing tags may include or omit the final slash — both will render properly.
+          <img src="image-location.jpg" />
+          The <img> tag has a required attribute called src. The src attribute must be set to the image's source, or the location of the image. In this case, the value of src must be the uniform resource locator (URL) of the image. A URL is the web address or local address where a file is stored.
+        -->
+        <pre>  
+          <code class="html">
+              &lt;img src=&quot;https://media.giphy.com/media/ZVik7pBtu9dNS/giphy.gif&quot; /&gt;
+          </code>
+        </pre>
+
+        <div class="image">
+          <img src="https://media.giphy.com/media/ZVik7pBtu9dNS/giphy.gif" />
+        </div>
+
+        <div class="image">
+          <img src="https://icdn.lenta.ru/images/2019/01/24/19/20190124194907466/pic_e690f764fa1aa5eaffca2f6a9ec1da6c.jpg" alt="Наш президент" />
+        </div>
+
+        <!-- 
+          Задание: 
+        -->
+        <div class="comment">
+          &lt;!-- 
+            Добавьте ссылку в img. Например: "https://media.giphy.com/media/xTiTnnLkYTDWSOWSHK/giphy.gif"
+          --&gt;
+        </div>
+      </section>
+
+      <section id="11">
+        <h2>Видео</h2>
+        <!--
+          In addition to images, HTML also supports displaying videos. Like the <img> tag, the <video> tag requires a src attribute with a link to the video source. Unlike the <img> tag however, the <video> element requires an opening and a closing tag.
+          <video src="myVideo.mp4" width="320" height="240" controls>
+            Video not supported
+          </video>
+          In this example, the video source (src) is myVideo.mp4 The source can be a video file that is hosted alongside your webpage, or a URL that points to a video file hosted on another webpage.
+          After the src attribute, the width and heightattributes are used to set the size of the video displayed in the browser. The controls attribute instructs the browser to include basic video controls: pause, play and skip.
+          The text, "Video not supported", between the opening and closing video tags will only be displayed if the browser is unable to load the video.
+
+          Under the image, add the following video url and wrap it in <video></video> tags:
+          https://s3.amazonaws.com/codecademy-content/courses/freelance-1/unit-1/lesson-2/htmlcss1-vid_brown-bear.mp4
+        -->
+        <pre>  
+          <code class="html">
+              &lt;video src=&quot;https://s3.amazonaws.com/codecademy-content/courses/freelance-1/unit-1/lesson-2/htmlcss1-vid_brown-bear.mp4&quot; width=&quot;320&quot; height=&quot;240&quot; controls&gt;
+                Video not supported
+              &lt;/video&gt;
+          </code>
+        </pre>
+        <div class="image">
+          <video src="https://www.quirksmode.org/html5/videos/big_buck_bunny.webm" width="320" height="240" controls>
+            Video not supported
+          </video>
+        </div>
+        <!-- 
+          Задание: 
+        -->
+        <div class="comment">
+          &lt;!-- 
+            Под картинкой добавьте видео с ссылкой https://www.quirksmode.org/html5/videos/big_buck_bunny.webm
+          --&gt;
+        </div>
+      </section>
+
+      <section id="12">
+        <h2>Тег Head</h2>
+        <!--
+          So far you've done two things to set up the file properly:
+          * 		Declared to the browser that your code is HTML with <!DOCTYPE html>
+          * 		Added the HTML element (<html>) that will contain the rest of your code.
+          We have added these elements to the Brown Bears page you previously created. Now, let's also give the browser some information about the page itself. We can do this by adding a <head> element.
+          Remember the <body> tag? The <head> element is part of this HTML metaphor. It goes above our <body> element.
+          The <head> element contains the metadata for a web page. Metadata is information about the page that isn't displayed directly on the web page. Unlike the information inside of the <body> tag, the metadata in the head is information about the page itself. You'll see an example of this in the next exercise.
+          The opening and closing head tags typically appear as the first item after your first HTML tag:
+          <head>
+          </head>
+        -->
+        <pre>  
+          <code class="html">
+              &lt;head&gt;
+              &lt;/head&gt;
+          </code>
+        </pre>
+        <!-- 
+          Задание: 
+        -->
+        <div class="comment">
+          &lt;!-- 
+            Добавьте секцию head
+          --&gt;
+        </div>
+      </section>
+
+      <section id="13">
+        <h2>Page Titles</h2>
+        <!--
+          What kind of metadata about the web page can the <head> element contain?
+          If you navigate to the Codecademy catalog and look at the top of your browser, you'll notice the words Catalog | Codecademy, which is the title of the web page.
+          A browser's tab displays the title specified in the <title> tag. The <title> tag is always inside of the <head>
+        -->
+        <pre>  
+          <code class="html">
+              &lt;head&gt;
+                &lt;title&gt;Blog&lt;/title&gt;
+              &lt;/head&gt;
+          </code>
+        </pre>
+        <!-- 
+          Задание: 
+        -->
+        <div class="comment">
+          &lt;!-- 
+            Добавьте title. Как проверить?
+          --&gt;
+        </div>
+      </section>
+
+      <section id="14">
+        <h2>Ссылки на другие страницы</h2>
+        <!--
+          One of the powerful aspects of HTML (and the Internet), is the ability to link to other web pages.
+          You can add links to a web page by adding an anchorelement <a> and including the text of the link in between the opening and closing tags.
+          <a>This Is A Link To Wikipedia</a>
+          Wait a minute! Technically, the link in the example above is incomplete. How exactly is the link above supposed to work if there is no URL that will lead users to the actual Wikipedia page?
+          The anchor element in the example above is incomplete without the href attribute. This attribute stands for hyperlink reference and is used to link to a path, or the address to where a file is located (whether it is on your computer or another location). The paths provided to the href attribute are often URLs.
+          <a href="https://www.wikipedia.org/">This Is A Link To Wikipedia</a>
+          In the example above, the href attribute has been set to the value of the URL https://www.wikipedia.org/. The example now shows the correct use of an anchor element.
+          When reading technical documentation, you may come across the term hyperlink. Not to worry, this is simply the technical term for link. These terms are often used interchangeably.
+        -->
+        <pre>  
+          <code class="html">
+              &lt;a href=&quot;https://www.wikipedia.org/&quot;&gt;This Is A Link To Wikipedia&lt;/a&gt;
+              &lt;a href=&quot;./img/tag.jpg&quot;&gt;Локальная ссылка&lt;/a&gt;
+          </code>
+        </pre>
+        <div class="example">
+          <a href="https://www.wikipedia.org/">Wikipedia</a>
+          <br/>
+          <a href="./img/tag.jpg" target="blank">Локальная ссылка</a>
+        </div>
+        <!-- 
+          Задание: 
+        -->
+        <div class="comment">
+          &lt;!-- 
+            <p>1. Сделать ссылку на другую страницу (которую делали ранее)</p>
+            <p>2. Сделать ссылку на ресурс</p>
+          --&gt;
+        </div>
+      </section>
+      <!--
+      <section id="body">
+        <h2>Итоги секции HTML</h2>
+        </!--
+          Let's review what you've learned so far:
+          * HTML stands for HyperText Markup Language and is used to create the structure and content of a webpage.
+          * Most HTML elements contain opening and closing tags with raw text or other HTML tags between them.
+          * HTML elements can be nested inside other elements. The enclosed element is the child of the enclosing parent element.
+          * Any visible content should be placed within the opening and closing <body> tags .
+          * Headings and sub-headings, <h1> to <h6> tags, are used to enlarge text.
+          * <p>, <span> and <div> tags specify text or blocks.
+          * The <em> and <strong> tags are used to emphasize text.
+          * Line breaks are created with the <br> tag.
+          * Ordered lists (<ol>) are numbered and unordered lists (<ul>) are bulleted.
+          * Images (<img>) and videos (<video>) can be added by linking to an existing source.
+        --/>
+        <div class="example">
+          Let&apos;s review what you&apos;ve learned so far:
+              * HTML stands for HyperText Markup Language and is used to create the structure and content of a webpage.
+              * Most HTML elements contain opening and closing tags with raw text or other HTML tags between them.
+              * HTML elements can be nested inside other elements. The enclosed element is the child of the enclosing parent element.
+              * Any visible content should be placed within the opening and closing &lt;body&gt; tags .
+              * Headings and sub-headings, &lt;h1&gt; to &lt;h6&gt; tags, are used to enlarge text.
+              * &lt;p&gt;, &lt;span&gt; and &lt;div&gt; tags specify text or blocks.
+              * The &lt;em&gt; and &lt;strong&gt; tags are used to emphasize text.
+              * Line breaks are created with the &lt;br&gt; tag.
+              * Ordered lists (&lt;ol&gt;) are numbered and unordered lists (&lt;ul&gt;) are bulleted.
+              * Images (&lt;img&gt;) and videos (&lt;video&gt;) can be added by linking to an existing source.
+        </div>
+      </section>
+      -->
+
+      <h1>Введение в <span class="yellow">CSS</span></h1>
+      <!-- 
+        The basic structure of every web page, HTML, is very plain on its own. The beautiful websites that you see across the internet are styled with a variety of tools, including CSS.
+        CSS, or Cascading Style Sheets, is a language that web developers use to style the HTML content on a web page. If you're interested in modifying colors, font types, font sizes, shadows, images, element positioning, and more, CSS is the tool for the job!
+        In this lesson, you'll learn how to select which HTML elements you wish to style and set up your CSS file structure.
+      -->
+      <section id="15">
+        <h2>Инлайновые стили</h2>
+        <!--
+          Although CSS is a different language than HTML, it's possible to write CSS code directly within HTML code using inline styles.
+          To style an HTML element, you can add the styleattribute directly to the opening tag. After you add the attribute, you can set it equal to the CSS style(s) you'd like applied to that element.
+          <p style="color: red;">I'm learning to code!</p>
+          The code in the example above demonstrates how to use inline styling. The paragraph element has a style attribute within its opening tag. Next, the style attribute is set equal to color: red;, which will set the color of the paragraph text to red within the browser.
+          You might be wondering about the syntax of the following snippet of code: color: red;. At the moment, the details of the syntax are not important; you'll learn more about CSS syntax in other exercises. For now, it's important to know that inline styles are a quick way of directly styling an HTML element.
+          If you'd like to add more than one style with inline styles, simply keep adding to the style attribute. Make sure to end the styles with a semicolon (;).
+        -->
+        <pre>  
+          <code class="html">
+              &lt;p style=&quot;color: red; font-size: 20px;&quot;&gt;I&apos;m learning to code!&lt;/p&gt;
+          </code>
+        </pre>
+        <div class="example">
+          <p style="color: red;font-size: 20px;">I'm learning to code!</p>
+        </div>
+        <!-- 
+          Задание: 
+        -->
+        <div class="comment">
+          &lt;!-- 
+            Повторить c color:red
+          --&gt;
+        </div>
+      </section>
+
+      <section id="16">
+        <h2>Тэг &lt;style&gt;</h2>
+        <!--
+          Inline styles are a fast way of styling HTML, but they also have limitations. If you wanted to style, for example, multiple <h1> elements, you would have to add inline styling to each element manually. In addition, you would also have to maintain the HTML code when additional <h1> elements are added.
+          Fortunately, HTML allows you to write CSS code in its own dedicated section with the <style> element. CSS can be written between opening and closing <style> tags. To use the <style> element, it must be placed inside of the <head> element.
+        -->
+        <pre>  
+          <code class="html">
+            &lt;style&gt;
+              p {
+                margin: 20px;
+              }
+
+              .yellow {
+                background-color: yellow;
+              }
+            &lt;/style&gt;
+          </code>
+        </pre>
+        <!-- 
+          Задание: 
+        -->
+        <div class="comment">
+          &lt;!-- 
+            Поместите в тег style color: green для тега p
+          --&gt;
+        </div>
+      </section>
+
+      <section id="17">
+        <h2>.css файл</h2>
+        <!--
+          Developers avoid mixing code by storing HTML and CSS code in separate files (HTML files contain only HTML code, and CSS files contain only CSS code).
+          You can create a CSS file by using the .css file name extension, like so: style.css
+          With a CSS file, you can write all the CSS code needed to style a page without sacrificing the readability and maintainability of your HTML file.
+        -->
+        <pre>  
+          <code class="css">
+            p {
+              margin: 20px;
+            }
+
+            .yellow {
+              background-color: yellow;
+            }
+          </code>
+        </pre>
+        <!-- 
+          Задание: 
+        -->
+        <div class="comment">
+          &lt;!-- 
+            В файл style.css поместите style color: blue для тега p
+          --&gt;
+        </div>
+      </section>
+
+      <section id="17">
+        <h2>Добавляем css файл</h2>
+        <!--
+          Perfect! We successfully separated structure (HTML) from styling (CSS), but the web page still looks bland. Why?
+          When HTML and CSS code are in separate files, the files must be linked. Otherwise, the HTML file won't be able to locate the CSS code, and the styling will not be applied.
+          You can use the <link> element to link HTML and CSS files together. The <link> element must be placed within the head of the HTML file. It is a self-closing tag and requires the following three attributes:
+          * href — like the anchor element, the value of this attribute must be the address, or path, to the CSS file.
+          * type — this attribute describes the type of document that you are linking to (in this case, a CSS file). The value of this attribute should be set to text/css.
+          * rel — this attribute describes the relationship between the HTML file and the CSS file. Because you are linking to a stylesheet, the value should be set to stylesheet.
+          When linking an HTML file and a CSS file together, the <link> element will look like the following:
+          <link href="https://www.codecademy.com/stylesheets/style.css" type="text/css" rel="stylesheet">
+          Note that in the example above the path to the stylesheet is a URL:
+          https://www.codecademy.com/stylesheets/style.css
+          Specifying the path to the stylesheet using a URL is one way of linking a stylesheet.
+          If the CSS file is stored in the same directory as your HTML file, then you can specify a relative pathinstead of a URL, like so:
+          <link href="./style.css" type="text/css" rel="stylesheet">
+          Using a relative path is very common way of linking a stylesheet.
+        -->
+        <pre>  
+          <code class="html">
+            &lt;link href=&quot;./style.css&quot; type=&quot;text/css&quot; rel=&quot;stylesheet&quot;&gt;
+          </code>
+        </pre>
+        <!-- 
+          Задание: 
+        -->
+        <div class="comment">
+          &lt;!-- 
+            Добавить в тег head наш созданный файл style.css
+          --&gt;
+        </div>
+      </section>
+
+      <section id="18">
+        <h2>CSS селекторы</h2>
+        <!--
+          Tag Name
+          CSS can select HTML elements by using an element's tag name. A tag name is the word (or character) between HTML angle brackets.
+          For example, in HTML, the tag for a paragraph element is <p>. The CSS syntax for selecting <p>elements is:
+          p {
+
+          }
+          In the example above, all paragraph elements will be selected using a CSS selector. The selector in the example above is p. Note that the CSS selector matches the HTML tag for that element, but without the angle brackets.
+          In addition, two curly braces follow immediately after the selector (an opening and closing brace, respectively). Any CSS properties will go inside of the curly braces to style the selected elements.
+        -->
+        <p>
+          <span class="yellow">по тегу</span>
+        </p>  
+        <pre>  
+          <code class="css">
+            p {
+              color: red;
+            }
+          </code>
+        </pre>
+
+        <!--
+          Class Name
+          CSS is not limited to selecting elements by tag name. HTML elements can have more than just a tag name; they can also have attributes. One common attribute is the class attribute. It's also possible to select an element by its class attribute.
+          For example, consider the following HTML:
+          <p class="brand">Sole Shoe Company</p>
+          The paragraph element in the example above has a class attribute within the <p> tag. The classattribute is set to "brand". To select this element using CSS, we could use the following CSS selector:
+          .brand {
+
+          }
+          To select an HTML element by its class using CSS, a period (.) must be prepended to the class's name. In the example above case, the class is brand, so the CSS selector for it is .brand.
+
+          Multiple Classes
+          We can use CSS to select an HTML element's classattribute by name.
+          So far, we've selected elements using only one class name per element. If every HTML element had a single class, all the style information for each element would require a new class.
+          Luckily, it's possible to add more than one class name to an HTML element's class attribute.
+          For instance, perhaps there's a heading element that needs to be green and bold. You could write two CSS rules like so:
+          .green {
+            color: green;
+          }
+
+          .bold {
+            font-weight: bold;
+          }
+          Then, you could include both of these classes on one HTML element like this:
+          <h1 class="green bold"> ... </h1>
+        -->
+        <span class="yellow">по классу</span>
+        <pre>  
+          <code class="css">
+            .green {
+              color: green;
+            }
+
+            .bold {
+              font-weight: bold;
+            }
+          </code>  
+          <code class="html">
+            &lt;h1 class=&quot;green bold&quot;&gt;Объединение классов&lt;/h1&gt;
+          </code>
+        </pre>
+
+        <!--
+          ID Name
+          If an HTML element needs to be styled uniquely (no matter what classes are applied to the element), we can add an ID to the element. To add an ID to an element, the element needs an id attribute:
+          <h1 id="large-title"> ... </h1>
+          Then, CSS can select HTML elements by their idattribute. To select an id element, CSS prepends the id name with a hashtag (#). For instance, if we wanted to select the HTML element in the example above, it would look like this:
+          #large-title {
+
+          }
+          The id name is large-title, therefore the CSS selector for it is #large-title.
+        -->
+        <span class="yellow">по id</span>
+        <pre>  
+          <code class="css">
+            #large-title {
+              font-weight: bold;
+            }
+          </code>
+          <code class="html">
+            &lt;h1 id=&quot;large-title&quot;&gt;Заголовок ID&lt;/h1&gt;
+          </code>
+        </pre>
+
+        <!--
+          Classes and IDs
+          CSS can select HTML elements by their tag, class, and ID. CSS classes and IDs have different purposes, which can affect which one you use to style HTML elements.
+          CSS classes are meant to be reused over many elements. By writing CSS classes, you can style elements in a variety of ways by mixing classes on HTML elements.
+          For instance, imagine a page with two headlines. One headline needs to be bold and blue, and the other needs to be bold and green. Instead of writing separate CSS rules for each headline that repeat each other's code, it's better to write a .bold CSS rule, a .green CSS rule, and a .blue CSS rule. Then you can give one headline the bold green classes, and the other the bold blue classes.
+          While classes are meant to be used many times, an ID is meant to style only one element. As we'll learn in the next exercise, IDs override the styles of tags and classes. Since IDs override class and tag styles, they should be used sparingly and only on elements that need to always appear the same.
+
+          Specificity
+          Specificity is the order by which the browser decides which CSS styles will be displayed. A best practice in CSS is to style elements while using the lowest degree of specificity, so that if an element needs a new style, it is easy to override.
+          IDs are the most specific selector in CSS, followed by classes, and finally, tags. For example, consider the following HTML and CSS:
+          <h1 class="headline">Breaking News</h1>
+          h1 {
+            color: red;
+          }
+
+          .headline {
+            color: firebrick;
+          }
+          In the example code above, the color of the heading would be set to firebrick, as the class selector is more specific than the tag selector. If an ID attribute (and selector) were added to the code above, the styles within the ID selector's body would override all other styles for the heading. The only way to override an ID is to add another ID with additional styling.
+          Over time, as files grow with code, many elements may have IDs, which can make CSS difficult to edit, since a new, more specific style must be created to change the style of an element.
+          To make styles easy to edit, it's best to style with a tag selector, if possible. If not, add a class selector. If that is not specific enough, then consider using an ID selector.
+        -->
+        <span class="yellow">специфичность</span>
+        <pre>  
+          <code class="css">
+            h1 {
+              color: red;
+            }
+
+            .headline {
+              color: firebrick;
+            }
+          </code>
+          <code class="html">
+            &lt;h1 class=&quot;headline&quot;&gt;Заголовок&lt;/h1&gt;
+          </code>
+        </pre>
+
+        <!--
+          Chaining Selectors
+          When writing CSS rules, it's possible to require an HTML element to have two or more CSS selectors at the same time.
+          This is done by combining multiple selectors, which we will refer to as chaining. For instance, if there was a .special class for h1 elements, the CSS would look like:
+          h1.special {
+
+          }
+          The code above would select only the h1 elements that have a class of special. If a p element also had a class of special, the rule in the example would not style the paragraph.
+        -->
+        <span class="yellow">мультиселекторы</span>
+        <pre>  
+          <code class="css">
+            h1.special {
+              font-weight: bold;
+            }
+          </code>
+          <code class="html">
+            &lt;h1 class=&quot;special&quot;&gt;Заголовок&lt;/h1&gt;
+            &lt;div class=&quot;special&quot;&gt;Контент&lt;/h1&gt;
+          </code>
+        </pre>
+
+        <!--
+          Nested Elements
+          In addition to chaining selectors to select elements, CSS also supports selecting elements that are nested within other HTML elements. For instance, consider the following HTML:
+          <ul class='main-list'>
+            <li> ... </li>
+            <li> ... </li>
+            <li> ... </li>
+          </ul>
+          The nested <li> elements are selected with the following CSS:
+          .main-list li {
+
+          }
+          In the example above, .main-list selects the .main-list element (the unordered list element). The nested <li> are selected by adding li to the selector, separated by a space, resulting in .main-list li as the final selector (note the space in the selector).
+          Selecting elements in this way can make our selectors even more specific by making sure they appear in the context we expect.
+        -->
+        <span class="yellow">вложенные селекторы</span>
+        <pre>  
+          <code class="css">
+            .main-list li {
+
+            }
+          </code>
+          <code class="html">
+            &lt;ul class=&apos;main-list&apos;&gt;
+              &lt;li&gt; ... &lt;/li&gt;
+              &lt;li&gt; ... &lt;/li&gt;
+              &lt;li&gt; ... &lt;/li&gt;
+            &lt;/ul&gt;
+          </code>
+        </pre>
+
+        <!--
+          Задание: 
+        -->
+        <div class="comment">
+          &lt;!-- 
+            Сделать пример с id, с использованием мультиселектора и с вложенным селектором
+          --&gt;
+        </div>
+
+        <!--
+          Review CSS Selectors
+          Throughout this lesson, you learned how to select HTML elements with CSS and apply styles to them. Let's review what you learned:
+          * 		CSS can change the look of HTML elements. In order to do this, CSS must select HTML elements, then apply styles to them.
+          * 		CSS can select HTML elements by tag, class, or ID.
+          * 		Multiple CSS classes can be applied to one HTML element.
+          * 		Classes can be reusable, while IDs can only be used once.
+          * 		IDs are more specific than classes, and classes are more specific than tags. That means IDs will override any styles from a class, and classes will override any styles from a tag selector.
+          * 		Multiple selectors can be chained together to select an element. This raises the specificity, but can be necessary.
+          * 		Nested elements can be selected by separating selectors with a space.
+          * 		The !important flag will override any style, however it should almost never be used, as it is extremely difficult to override.
+          * 		Multiple unrelated selectors can receive the same styles by separating the selector names with commas.
+          Great work this lesson. With this knowledge, you'll be able to use CSS to change the look and feel of websites to make them look great.
+        -->
+      </section>
+
+      <section id="18">
+        <h2>Font</h2>
+        <!--
+          Font Family
+          If you've ever used a formatted word processor, chances are that you probably also used a feature that allowed you change the font you were typing in. Font refers to the technical term typeface, or font family.
+          To change the typeface of text on your web page, you can use the font-family property.
+          h1 {
+            font-family: Garamond;
+          }
+          In the example above, the font family for all main heading elements has been set to Garamond.
+          When setting typefaces on a web page, keep the following points in mind:
+          * The font specified in a stylesheet must be installed on a user's computer in order for that font to display when a user visits the web page.
+          * The default typeface for all HTML elements is Times New Roman. You may be familiar with this typeface if you have ever used a formatted word processor. If no font-family attribute is defined, the page will appear in Times New Roman.
+          * It's a good practice to limit the number of typefaces used on a web page to 2 or 3. This helps the page load faster in some cases and is usually a good design decision.
+          * When the name of a typeface consists of more than one word, it's a best practice to enclose the typeface's name in quotes, like so:
+          h1 {
+            font-family: "Courier New";
+          }
+        -->
+        <p>
+          <span class="yellow">font-family</span>
+        </p>
+        <pre>  
+          <code class="css">
+            h1 {
+              font-family: "Courier New";
+            }
+          </code>
+        </pre>
+
+        <!--
+          Font Size
+          Changing the typeface isn't the only way to customize text. Often times, different sections of a web page are highlighted by modifying the font size.
+          To change the size of text on your web page, you can use the font-size property.
+          p {
+            font-size: 18px;
+          }
+          In the example above, the font-size of all paragraphs was set to 18px. px means pixels and is a way to measure font size.
+        -->
+        <span class="yellow">font-size</span>
+        <pre>  
+          <code class="css">
+            p {
+              font-size: 18px;
+            }
+          </code>
+        </pre>
+
+        <!--
+          Font Weight
+          In CSS, the font-weight property controls how bold or thin text appears.
+          p {
+            font-weight: bold;
+          }
+          In the example above, all paragraphs on the web page would appear bolded.
+          The font-weight property has a another value: normal. Why does it exist?
+          If we wanted all text on a web page to appear bolded, we could select all text elements and change their font weight to bold. If a certain section of text was required to appear normal, however, we could set the font weight of that particular element to normal, essentially shutting off bold for that element.
+        -->
+        <span class="yellow">font-weight</span>
+        <pre>  
+          <code class="css">
+            p {
+              font-weight: bold;
+            }
+          </code>
+        </pre>
+
+        <!--
+          Text Align
+          No matter how much styling is applied to text (typeface, size, weight, etc.), text always appears on the left side of the browser.
+          To align text we can use the text-align property. The text-align property will align text to the element that holds it, otherwise known as its parent.
+          h1 {
+            text-align: right;
+          }
+          The text-align property can be set to one of the following three values:
+          * left — aligns text to the left hand side of its parent element, which in this case is the browser.
+          * center — centers text inside of its parent element.
+          * right — aligns text to the right hand side of its parent element.
+        -->
+        <span class="yellow">text-align</span>
+        <pre>  
+          <code class="css">
+            p {
+              text-align: right;
+            }
+          </code>
+        </pre>
+
+        <!--
+          Color
+          Before discussing the specifics of color, it's important to make two distinctions about color. Color can affect the following design aspects:
+          * 		Foreground color
+          * 		Background color
+          Foreground color is the color that an element appears in. For example, when a heading is styled to appear green, the foreground color of the heading has been styled.
+          Conversely, when a heading is styled so that its background appears yellow, the background color of the heading has been styled.
+        -->
+        <span class="yellow">color</span>
+        <pre>  
+          <code class="css">
+            p {
+              color: right;
+            }
+          </code>
+        </pre>
+        <!-- 
+          Задание: 
+        -->
+        <div class="comment">
+          &lt;!-- 
+            Полужирный текст на желтом фоне, выровненный по центру внутри тега p
+          --&gt;
+        </div>
+      </section>
+
+      <section id="19">
+        <h2>Фоновая картника</h2>
+        <!--
+          Background Image
+          CSS has the ability to change the background of an element. One option is to make the background of an element an image. This is done through the CSS property background-image. Its syntax looks like this:
+          .main-banner {
+            background-image: url("https://www.example.com/image.jpg");
+          }
+          * The background-image property will set the element's background to display an image.
+          * The value provided to background-image is a url. The url should be a url to an image. The url can be a file within your project, or it can be a link to an external site. To link to an image inside an existing project, you must provide a relative file path. If there was an image folder in the project, with an image named mountains.jpg, the relative file path would look like:
+          .main-banner {
+            background-image: url("images/mountains.jpg");
+          }
+        -->
+        <pre>  
+          <code class="css">
+            .main-banner {
+              background-image: url("http://media.giphy.com/media/Jrd9E2kuPuOYM/giphy.gif");
+            }
+          </code>
+        </pre>
+        <!-- 
+          Задание: 
+        -->
+        <div class="comment">
+          &lt;!-- 
+            Повторить
+          --&gt;
+        </div>
+
+        <div style="width: 400px; height: 400px; background-image:url('https://www.apple.com/v/iphone/compare/l/images/overview/compare_iphone7plus_black_large_2x.jpg');">
+           <p style="color:white;padding-top: 100px">Текст внутри картинки</p> 
+        </div>
+
+        <!--
+          Review Visual Rules
+          Incredible work! You used CSS to alter text and images throughout a website. Throughout this lesson, you learned concepts including:
+          * 		CSS declarations are structured into property and value pairs.
+          * 		The font-family property defines the typeface of an element.
+          * 		font-size controls the size of text displayed.
+          * 		font-weight defines how thin or thick text is displayed.
+          * 		The text-align property places text in the left, right, or center of its parent container.
+          * 		Text can have two different color attributes: color and background-color. color defines the color of the text, while background-colordefines the color behind the text.
+          * 		CSS can make an element transparent with the opacity property.
+          * 		CSS can also set the background of an element to an image with the background-imageproperty.
+        -->
+      </section>
+
+      <section id="20">
+        <h2 style="width: 100px; height: 100px;padding: 20px; border: 5px solid red; border-radius: 10%">Box Model</h2>
+        <!--
+          Browsers load HTML elements with default position values. This often leads to an unexpected and unwanted user experience, while limiting the views you can create. In this lesson you will learn about the box model, an important concept to understand how elements are positioned and displayed on a website.
+          If you have used HTML and CSS, you have unknowingly seen aspects of the box model. For example, if you have set the background color of an element, you may have noticed that the color was applied not only to the area directly behind the element, but also to the area to the right of the element. Also, if you have aligned text, you know it is aligned relative to something. What is that something?
+          All elements on a web page are interpreted by the browser as "living" inside of a box. This is what is meant by the box model.
+          For example, when you change the background color of an element, you change the background color of its entire box.
+          In this lesson, you'll learn about the following aspects of the box model:
+          * The dimensions of an element's box.
+          * The borders of an element's box.
+          * The paddings of an element's box.
+          * The margins of an element's box.
+          Let's begin!
+
+          Take some time to edit the code to the right. See if you can figure out how these following properties impact an element's display:
+          * height
+          * width
+          * padding
+          * border
+          * margin
+          * overflow
+        -->
+        <div class="image">
+          <img src="./img/box.jpg" />
+        </div>
+
+        <!--
+          The box model comprises the set of properties which define parts of an element that take up space on a web page. The model includes the content area's size (width and height) and the element's padding, border, and margin. The properties include:
+          * Width and height — specifies the width and height of the content area.
+          * Padding — specifies the amount of space between the content area and the border.
+          * Border — specifies the thickness and style of the border surrounding the content area and padding.
+          * Margin — specifies the amount of space between the border and the outside edge of the element.
+          The image to the right is a visual representation of the box model.
+          Open the box model image in a new tab so you can reference the box model as you move through the lesson.
+        -->
+
+        <!--
+          Height and Width
+          An element's content has two dimensions: a height and a width. By default, the dimensions of an HTML box are set to hold the raw contents of the box.
+          The CSS height and width properties can be used to modify these default dimensions.
+          p {
+            height: 80px;
+            width: 240px;
+          }
+          In this example, the height and width of paragraph elements are set to 80 pixels and 240 pixels, respectively — the px in the code above stands for pixels.
+          Pixels allow you to set the exact size of an element's box (width and height). When the width and height of an element are set in pixels, it will be the same size on all devices — an element that fills a laptop screen will overflow a mobile screen.
+        -->
+        <span class="yellow">высота и ширина</span>
+        <pre>  
+          <code class="css">
+            p {
+              height: 80px;
+              width: 240px;
+            }
+          </code>
+        </pre>
+
+        <!--
+          Borders
+          A border is a line that surrounds an element, like a frame around a painting. Borders can be set with a specific width, style, and color.
+          * width — The thickness of the border. A border's thickness can be set in pixels or with one of the following keywords: thin, medium, or thick.
+          * style — The design of the border. Web browsers can render any of 10 different styles. Some of these styles include: none, dotted, and solid.
+          * color — The color of the border. Web browsers can render colors using a few different formats, including 140 built-in color keywords.
+          p {
+            border: 3px solid coral;
+          }
+          In the example above, the border has a width of 3 pixels, a style of solid and a color of coral. All three properties are set in one line of code.
+          The default border is medium none color, where color is the current color of the element. If width, style, or color are not set in the CSS file, the web browser assigns the default value for that property.
+          p.content-header {
+            height: 80px;
+            width: 240px;
+            border: solid coral;
+          }
+          In this example, the border style is set to solid and the color is set to coral. The width is not set, so it defaults to medium.
+        -->
+        <span class="yellow">граница</span>
+        <pre>  
+          <code class="css">
+            p {
+              border: 3px solid coral;
+            }
+          </code>
+        </pre>
+
+        <!--
+          Padding I
+          The space between the contents of a box and the borders of a box is known as padding. Padding is like the space between a picture and the frame surrounding it. In CSS, you can modify this space with the padding property.
+          p.content-header {
+            border: 3px solid coral;
+            padding: 10px;
+          }
+          The code in this example puts 10 pixels of space between the content of the paragraph (the text) and the borders, on all four sides.
+          The padding property is often used to expand the background color and make content look less cramped.
+          If you want to be more specific about the amount of padding on each side of a box's content, you can use the following properties:
+          * padding-top
+          * padding-right
+          * padding-bottom
+          * padding-left
+          Each property affects the padding on only one side of the box's content, giving you more flexibility in customization.
+          p.content-header {
+            border: 3px solid fuschia;
+            padding-bottom: 10px;
+          }
+          In the example above, only the bottom side of the paragraph's content will have a padding of 10 pixels.
+        -->
+        <span class="yellow">отступ внутри</span>
+        <pre>  
+          <code class="css">
+            p.content-header {
+              border: 3px solid coral;
+              padding: 10px;
+            }
+          </code>
+        </pre>
+
+        <!--
+          Margins I
+          So far you've learned about the following components of the box model: content, borders, and padding. The fourth and final component of the box model is margin.
+          Margin refers to the space directly outside of the box. The margin property is used to specify the size of this space.
+          p {
+            border: 1px solid aquamarine;
+            margin: 20px;
+          }
+          The code in the example above will place 20 pixels of space on the outside of the paragraph's box on all four sides. This means that other HTML elements on the page cannot come within 20 pixels of the paragraph's border.
+          If you want to be even more specific about the amount of margin on each side of a box, you can use the following properties:
+          * margin-top
+          * margin-right
+          * margin-bottom
+          * margin-left
+          Each property affects the margin on only one side of the box, providing more flexibility in customization.
+          p {
+            border: 3px solid DarkSlateGrey;
+            margin-right: 15px;
+          }
+          In the example above, only the right side of the paragraph's box will have a margin of 15 pixels. It's common to see margin values used for a specific side of an element.
+        -->
+        <span class="yellow">отступ снаружи</span>
+        <pre>  
+          <code class="css">
+            p.content-header {
+              border: 3px solid coral;
+              margin: 20px;
+            }
+          </code>
+        </pre>
+        <!-- 
+          Задание: 
+        -->
+        <div class="comment">
+          &lt;!-- 
+            Сделать тег p с текстом и добавить height, width, border, margin, padding
+          --&gt;
+        </div>
+      </section>
+    </main>
+    <footer>
+      <h1>Задание</h1>
+      <ol class="example">
+        <li>HTML Теория и Практика - https://www.codecademy.com/learn/learn-html</li>
+        <li>CSS Теория и Практика -  https://www.codecademy.com/learn/learn-css</li>
+        <li>HTML Теория на русском - https://html5book.ru/osnovy-html</li>
+        <li>CSS Теория на русском - https://html5book.ru/css-css3</li>
+      </ol>
+    </footer>
+  </body>
+</html>
