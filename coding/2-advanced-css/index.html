@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Advanced HTML & CSS</title>
+    <!-- <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/monokai.min.css" /> -->
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/solarized-dark.min.css" />
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+    <style>
+      body {
+        background-color: black;
+        font-family: monaco, monospace;
+      }
+      header {
+        padding-top: 80px;
+        text-align: center;
+        background: url(https://media.giphy.com/media/126a9s4jdCYDIs/giphy.gif)
+          50% no-repeat;
+        background-size: cover;
+        height: 800px;
+      }
+      h1,
+      h2 {
+        display: inline-block;
+        background: #fff;
+      }
+      h1 {
+        font-size: 30px;
+      }
+      h2 {
+        font-size: 20px;
+      }
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+      main {
+        padding: 20px;
+      }
+
+      .image {
+        padding: 10px 50px;
+        text-align: center;
+      }
+      .yellow {
+        background: #fd0;
+      }
+      .example {
+        background-color:#fff;
+        padding: 15px;
+        margin-bottom: 25px;
+      }
+      .comment::before {
+        content: 'Задание:'
+      }
+      .comment {
+        background-color:#fff;
+        padding: 15px;
+        color: green;
+        margin: 50px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>Welcome to <span class="yellow">Coding</span></h1>
+      <br />
+      <h2>Advanced HTML & CSS</h2>
+    </header>
+
+    <main>
+      <h1>Анимации в <span class="yellow">CSS</span></h1>
+      <!--
+        CSS animations allow to do simple animations without JavaScript at all.
+
+        JavaScript can be used to control CSS animation and make it even better with a little of code.
+      -->
+      <section id="1">
+        <h2>CSS переходы (CSS transitions)</h2>
+        <!--
+          The idea of CSS transitions is simple. We describe a property and how its changes should be animated. When the property changes, the browser paints the animation.
+
+          That is: all we need is to change the property. And the fluent transition is made by the browser.
+
+          For instance, the CSS below animates changes of background-color for 3 seconds:
+        -->
+        <pre>
+          <code class="css">
+            .animated {
+              transition-property: background-color;
+              transition-duration: 3s;
+            }
+          </code>
+        </pre>
+        <!--
+          Now if an element has .animated class, any change of background-color is animated during 3 seconds.
+
+          Click the button below to animate the background:
+        -->
+        <pre>
+          <code class="html">
+              &lt;button id="color"&gt;Click me&lt;/button&gt;
+
+              &lt;style&gt;
+                #color {
+                  transition-property: background-color;
+                  transition-duration: 3s;
+                }
+              &lt;/style&gt;
+
+              &lt;script&gt;
+                color.onclick = function() {
+                  this.style.backgroundColor = 'red';
+                };
+              &lt;/script&gt;
+          </code>
+        </pre>
+
+        <!--
+          We’ll cover them in a moment, for now let’s note that the common transition property allows to declare them together in the order: property duration timing-function delay, and also animate multiple properties at once.
+
+          For instance, this button animates both color and font-size:
+        -->
+
+        <div class="example">
+          <p class="codepen" data-height="565" data-theme-id="dark" data-default-tab="html,result" data-user="sani-banani" data-slug-hash="QoBaEq" data-preview="true" style="height: 565px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid black; margin: 1em 0; padding: 1em;" data-pen-title="#2-1-example">
+            <span>See the Pen <a href="https://codepen.io/sani-banani/pen/QoBaEq/">
+            #2-1-example</a> by Alexander (<a href="https://codepen.io/sani-banani">@sani-banani</a>)
+            on <a href="https://codepen.io">CodePen</a>.</span>
+          </p>
+        </div>
+
+        <h2>4 свойства, описывающие CSS transitions</h2>
+        <div class="example">
+          <ul>
+            <li>transition-property</li>
+            <li>transition-duration</li>
+            <li>transition-timing-function</li>
+            <li>transition-delay</li>
+          </ul>
+        </div>
+
+        <!--
+          <h2>transition-property</h2>
+
+          In transition-property we write a list of property to animate, for instance: left, margin-left, height, color.
+
+          Not all properties can be animated, but many of them. The value all means “animate all properties”.
+
+          <h2>transition-duration</h2>
+          In transition-duration we can specify how long the animation should take. The time should be in CSS time format: in seconds s or milliseconds ms.
+
+          <h2>transition-delay</h2>
+          In transition-delay we can specify the delay before the animation. For instance, if transition-delay: 1s, then animation starts after 1 second after the change.
+
+          Negative values are also possible. Then the animation starts from the middle. For instance, if transition-duration is 2s, and the delay is -1s, then the animation takes 1 second and starts from the half.
+
+          Here’s the animation shifts numbers from 0 to 9 using CSS translate property:
+        -->
+
+        <!--
+          Задание:
+        -->
+        <div class="comment">
+          &lt;!--
+            Сделать анимацию свойства из исходника https://codepen.io/sani-banani/pen/XGPOjL
+          --&gt;
+        </div>
+      </section>
+
+      <section id="2">
+        <h2>CSS Animations. Keyframes</h2>
+        <!--
+          In the previous chapter you've seen how to do simple animations like animating a property from one value to another via CSS3 transitions feature. However, the CSS3 transitions provide little control on how the animation progresses over time.
+
+          The CSS3 animations take it a step further with keyframe-based animations that allow you to specify the changes in CSS properties over time as a set of keyframes, like flash animations. Creating CSS animations is a two step process, as shown in the example below:
+
+          The first step of building a CSS animation is to defining individual keyframes and naming an animation with a keyframes declaration.
+          The second step is referencing the keyframes by name using the animation-name property as well as adding animation-duration and other optional animation properties to control the animation's behavior.
+          However, it is not necessary to define the keyframes rules before referencing or applying it. The following example will show you how to animate a <div> box horizontally from one position to another using the CSS3 animation feature.
+        -->
+        <pre>
+          <code class="css">
+              div {
+                animation-name: myanimation;
+                animation-duration: 2s;
+              }
+
+              @keyframes myanimation {
+                from {
+                  transform: rotate(0deg);
+                }
+                to {
+                  transform: rotate(360deg);
+                }
+              }
+          </code>
+        </pre>
+        <!-- 
+          Keyframes are used to specify the values for the animating properties at various stages of the animation. Keyframes are specified using a specialized CSS at-rule — @keyframes. The keyframe selector for a keyframe style rule starts with a percentage (%) or the keywords from (same as 0%) or to (same as 100%). The selector is used to specify where a keyframe is constructed along the duration of the animation.
+
+          Percentages represent a percentage of the animation duration, 0% represents the starting point of the animation, 100% represents the end point, 50% represents the midpoint and so on. That means, a 50% keyframe in a 2s animation would be 1s into an animation.
+        -->
+
+        <div class="example">
+            <p class="codepen" data-height="565" data-theme-id="dark" data-default-tab="html,result" data-user="sani-banani" data-slug-hash="bZjMja" data-preview="true" style="height: 565px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid black; margin: 1em 0; padding: 1em;" data-pen-title="#2-2-keyframes">
+                <span>See the Pen <a href="https://codepen.io/sani-banani/pen/bZjMja/">
+                #2-2-keyframes</a> by Alexander (<a href="https://codepen.io/sani-banani">@sani-banani</a>)
+                on <a href="https://codepen.io">CodePen</a>.</span>
+              </p>
+        </div>
+
+        <h2>transform:</h2>
+        <div class="example">
+          <ul>
+            <li>transform: matrix(1.0, 2.0, 3.0, 4.0, 5.0, 6.0)</li>
+            <li>transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)</li>
+            <li>transform: translate(12px, 50%)</li>
+            <li>transform: translate3d(12px, 50%, 3em)</li>
+            <li>transform: translateX(2em)</li>
+            <li>transform: translateY(3in)</li>
+            <li>transform: translateZ(2px)</li>
+            <li>transform: scale(2, 0.5)</li>
+            <li>transform: scale3d(2.5, 1.2, 0.3)</li>
+            <li>transform: scaleX(2)</li>
+            <li>transform: scaleY(0.5)</li>
+            <li>transform: scaleZ(0.3)</li>
+            <li>transform: rotate(0.5turn)</li>
+            <li>transform: rotate3d(1, 2.0, 3.0, 10deg)</li>
+            <li>transform: rotateX(10deg)</li>
+            <li>transform: rotateY(10deg)</li>
+            <li>transform: rotateZ(10deg)</li>
+            <li>transform: skew(30deg, 20deg)</li>
+            <li>transform: skewX(30deg)</li>
+            <li>transform: skewY(1.07rad)</li>
+            <li>transform: perspective(17px)</li>
+
+            <li>transform: translateX(10px) rotate(10deg) translateY(5px)</li>
+          </ul>
+        </div>
+
+        <div class="example">
+          <p class="codepen" data-height="565" data-theme-id="dark" data-default-tab="html,result" data-user="sani-banani" data-slug-hash="mojLQW" data-preview="true" style="height: 565px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid black; margin: 1em 0; padding: 1em;" data-pen-title="#2-2-selectors">
+            <span>See the Pen <a href="https://codepen.io/sani-banani/pen/mojLQW/">
+            #2-2-selectors</a> by Alexander (<a href="https://codepen.io/sani-banani">@sani-banani</a>)
+            on <a href="https://codepen.io">CodePen</a>.</span>
+          </p>
+        </div>
+
+        <!--
+          Задание:
+        -->
+        <div class="comment">
+          &lt;!--
+            Сделать мульти анимацию из исходника https://codepen.io/sani-banani/pen/ZPMwEV
+          --&gt;
+        </div>
+      </section>
+
+      <section id="3">
+        <h2>timing-function</h2>
+        <!--
+          The animation-timing-function property defines the speed characteristics of an animation. It accepts a few different values.
+            - cubic-bezier(x1, y1, x2, y2) - provides ability to define custom speed
+            - ease - start and end slowly but speedier in the middle(default)
+            - ease-in- start slowly
+            - ease-in-out - start and end slowly but not the same as ease
+            - ease-out - end slowly
+            - linear - maintain speed throughout
+            - steps(number, direction <optional>) - provides a way to split the animation into equal steps. direction values can either be start or end. start means that the first step happens at the start of the animation. end means that the last step happens at the end of the animation. end is the default value.
+        -->
+        <div class="example">
+          <ul>
+            <li>cubic-bezier</li>
+            <li>linear = cubic-bezier(0, 0, 1, 1)</li>
+            <li>ease</li>
+            <li>ease-in</li>
+            <li>ease-out</li>
+            <li>ease-in-out</li>
+          </ul>
+        </div>
+
+        <div class="image">
+          <img src="./img/transform-functions.png" />
+        </div>
+
+        <div class="example">
+          <p class="codepen" data-height="565" data-theme-id="dark" data-default-tab="css,result" data-user="sani-banani" data-slug-hash="YgjLYw" data-preview="true" style="height: 565px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid black; margin: 1em 0; padding: 1em;" data-pen-title="timing-function effects ⏱">
+            <span>See the Pen <a href="https://codepen.io/sani-banani/pen/YgjLYw/">
+            timing-function effects ⏱</a> by Alexander (<a href="https://codepen.io/sani-banani">@sani-banani</a>)
+            on <a href="https://codepen.io">CodePen</a>.</span>
+          </p>
+        </div>
+        <!--
+          Задание:
+        -->
+        <div class="comment">&lt;!-- Применить тайминг-функцию --&gt;</div>
+      </section>
+
+      <section id="4">
+        <h2>animation-play-state</h2>
+        <!--
+          Play state is pretty simple. You can pause animations or have them running. You do this with the animation-play-state property. For our spinning square we could introduce a checkbox that toggles the play state. Using the sibling selector, we can toggle the play state
+        -->
+        <div class="example">
+            <p class="codepen" data-height="565" data-theme-id="dark" data-default-tab="html,result" data-user="sani-banani" data-slug-hash="EMpLzY" data-preview="true" style="height: 565px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid black; margin: 1em 0; padding: 1em;" data-pen-title="#2-4-animation-play-state 🎬">
+                <span>See the Pen <a href="https://codepen.io/sani-banani/pen/EMpLzY/">
+                #2-4-animation-play-state 🎬</a> by Alexander (<a href="https://codepen.io/sani-banani">@sani-banani</a>)
+                on <a href="https://codepen.io">CodePen</a>.</span>
+              </p>
+        </div>
+        <!--
+          Задание:
+        -->
+        <div class="comment">
+          &lt;!-- Применить animation-play-state --&gt;
+        </div>
+      </section>
+
+      <section id="5">
+        <h2>animation-delay</h2>
+        
+        <div class="example">
+            <p class="codepen" data-height="565" data-theme-id="dark" data-default-tab="result" data-user="sani-banani" data-slug-hash="xBJzZZ" data-preview="true" style="height: 565px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid black; margin: 1em 0; padding: 1em;" data-pen-title="#2-5-animation-delay 📽">
+                <span>See the Pen <a href="https://codepen.io/sani-banani/pen/xBJzZZ/">
+                #2-5-animation-delay 📽</a> by Alexander (<a href="https://codepen.io/sani-banani">@sani-banani</a>)
+                on <a href="https://codepen.io">CodePen</a>.</span>
+              </p>
+        </div>
+        <!--
+          Задание:
+        -->
+        <div class="comment">
+          &lt;!--
+            Применить animation-delay
+          --&gt;
+        </div>
+      </section>
+
+      <section id="6">
+        <h2>animation-fill-mode</h2>
+        <!--
+          By default, when we apply an animation to an element, it has no affect before or after it has ran. animation-fill-mode changes that.
+
+          The values for animation-fill-mode that will interest us are;
+
+          * forwards - element retains animation styling
+          * backwards- element retains style from first keyframe during animation-delay
+          * both - element retains styling in both directions
+        -->
+        <div class="example">
+          <ul>
+            <li>forwards</li>
+            <li>backwards</li>
+            <li>both</li>
+          </ul>
+        </div>
+        
+        <div class="example">
+            <p class="codepen" data-height="565" data-theme-id="dark" data-default-tab="result" data-user="sani-banani" data-slug-hash="zbLaoG" data-preview="true" style="height: 565px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid black; margin: 1em 0; padding: 1em;" data-pen-title="#2-6-animation-fill-mode 🔫">
+                <span>See the Pen <a href="https://codepen.io/sani-banani/pen/zbLaoG/">
+                #2-6-animation-fill-mode 🔫</a> by Alexander (<a href="https://codepen.io/sani-banani">@sani-banani</a>)
+                on <a href="https://codepen.io">CodePen</a>.</span>
+              </p>
+        </div>
+        <!--
+          Задание:
+        -->
+        <div class="comment">
+          &lt;!--
+            Применить animation-fill-mode
+          --&gt;
+        </div>
+      </section>
+
+      <section id="7">
+        <h2>animation-direction</h2>
+        <!--
+          Last but not least is animation-direction. No surprises that this property allows you to define the direction of your animation. There are four main keywords;
+
+          * alternate- the direction of the animation alternates on each iteration
+          * alternate-reverse- same as alternate but starts in reverse
+          * normal - self explanatory
+          * reverse - the animation is played in reverse
+        -->
+        <div class="example">
+            <ul>
+              <li>alternate</li>
+              <li>alternate-reverse</li>
+              <li>normal</li>
+              <li>reverse</li>
+            </ul>
+          </div>
+
+        <!--
+          Задание:
+        -->
+        <div class="comment">
+          &lt;!--
+            Применить animation-direction
+          --&gt;
+        </div>
+      </section>
+
+      <section id="8">
+        <h2>animation shorthand</h2>
+        <!--
+          In addition to organizing text in paragraph form, you can also display content in an easy-to-read list.
+          In HTML, you can use an unordered list tag (<ul>) to create a list of items in no particular order. An unordered list outlines individual list items with a bullet point.
+          The <ol> element should not hold raw text and won't automatically format raw text into an unordered list of items. Individual list items must be added to the unordered list using the <li> tag. The <li> or list item tag is used to describe an item in a list.
+          <ul>
+            <li>Limes</li>
+            <li>Tortillas</li>
+            <li>Chicken</li>
+          </ul>
+        -->
+        <div class="example">
+          <img src="img/animation-long-record.png" />
+        </div>
+        <div class="example">
+          <img src="img/animation-short-hand.png" />
+        </div>
+        <div class="example">
+          <img src="img/animation-record.png" />
+        </div>
+
+        <pre>
+          <code class="css">
+              div {
+                animation-name: move;
+                animation-duration: 5s;
+                animation-iteration-count: infinite;
+              }
+          </code>
+        </pre>
+
+        <pre>
+          <code class="css">
+              div {
+                animation: move 5s infinite;
+              }
+          </code>
+        </pre>
+        <!--
+          Задание:
+        -->
+        <div class="comment">
+          &lt;!--
+            Сделайте из вашего примера короткую запись
+          --&gt;
+        </div>
+      </section>
+
+      <section id="9">
+        <h2>Flexbox</h2>
+        <!--
+          Flexbox uses two types of boxes that we’ve never seen before: “flex containers” and “flex items”. The job of a flex container is to group a bunch of flex items together and define how they’re positioned.
+
+          Diagram: flex container as a highlighted container wrapping grayed out elements versus flex items as highlighted boxes inside the container
+          Every HTML element that’s a direct child of a flex container is an “item”. Flex items can be manipulated individually, but for the most part, it’s up to the container to determine their layout. The main purpose of flex items are to let their container know how many things it needs to position.
+        -->
+        <div class="example">
+          <img src="img/flexbox-layouts.png" />
+        </div>
+        <div class="example">
+          <img src="img/flex-container-and-flex-items.png" />
+        </div>
+        <div class="example">
+          <img src="img/flex-justify-content-alignment.png" />
+        </div>
+        <div class="example">
+          <img src="img/flex-justify-content-distribution-b0ee9c.png" />
+        </div>
+        <div class="example">
+          <img src="img/flex-align-items-26abfd.png" />
+        </div>
+        <div class="example">
+          <img src="img/align-items-vs-justify-content-4d380e.png" />
+        </div>
+        <!--
+          Use display: flex; to create a flex container.
+          Use justify-content to define the horizontal alignment of items.
+          Use align-items to define the vertical alignment of items.
+          Use flex-direction if you need columns instead of rows.
+          Use the row-reverse or column-reverse values to flip item order.
+          Use order to customize the order of individual elements.
+          Use align-self to vertically align individual items.
+          Use flex to create flexible boxes that can stretch and shrink.
+        -->
+
+        <!--
+          Задание:
+        -->
+        <div class="comment">
+          &lt;!--
+            Добавьте flexbox к блоку page и выстроить в один горизонтальный ряд блок с features. Форкнуть из исходника https://codepen.io/sani-banani/pen/ZPMPNy
+          --&gt;
+        </div>
+      </section>
+
+      <section id="10">
+        <h2>Responsive Design</h2>
+        <!--
+          “Responsive design” refers to the idea that your website should display equally well in everything from widescreen monitors to mobile phones. It’s an approach to web design and development that eliminates the distinction between the mobile-friendly version of your website and its desktop counterpart. With responsive design, they’re the same thing.
+
+          Responsive design is accomplished through CSS “media queries”. Think of media queries as a way to conditionally apply CSS rules. They tell the browser that it should ignore or apply certain rules depending on the user’s device.
+        -->
+        <div class="image">
+          <img src="img/how-responsive-websites-work-5f0a33.png" />
+        </div>
+
+        <h2>Mobile First Development</h2>
+
+        <div class="image">
+          <img src="img/mobile-first-design-be30e4.png" />
+        </div>
+
+        <!--
+        <div class="example">
+          <p class="codepen" data-height="565" data-theme-id="dark" data-default-tab="css,result" data-user="sani-banani" data-slug-hash="YgOZXo" data-preview="true" style="height: 565px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid black; margin: 1em 0; padding: 1em;" data-pen-title="YgOZXo">
+            <span>See the Pen <a href="https://codepen.io/sani-banani/pen/YgOZXo/">
+            YgOZXo</a> by Alexander (<a href="https://codepen.io/sani-banani">@sani-banani</a>)
+            on <a href="https://codepen.io">CodePen</a>.</span>
+          </p>
+        </div>
+        -->
+
+        <!--
+          Задание:
+        -->
+        <div class="comment">
+          <p>Сделать как на рисунке выше</p>
+          <ol>
+            <li>Адаптировать под мобильную версию блок с features - показывать в один вертикальный ряд</li>
+            <li>Под айпады - показывать в 50% ширины, чтобы было два блока в ряд</li>
+            <li>Вынести Features после Header</li>
+          </ol>  
+        </div>
+      </section>
+    </main>
+    <footer>
+      <h1>Литература</h1>
+      <ol class="example">
+        <li>HTML Теория и Практика - https://www.codecademy.com/learn/learn-html</li>
+        <li>CSS Теория и Практика -  https://www.codecademy.com/learn/learn-css</li>
+        <li>HTML Теория на русском - https://html5book.ru/osnovy-html</li>
+        <li>CSS Теория на русском - https://html5book.ru/css-css3</li>
+      </ol>
+    </footer>
+  </body>
+</html>
