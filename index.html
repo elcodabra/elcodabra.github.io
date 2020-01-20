@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Alexander Konovalov / Full-Stack Developer</title>
+    <title>Aleksandr Konovalov / Full-Stack Developer</title>
     <link rel="stylesheet" href="css/resume.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Nunito:light,normal|Montserrat|Roboto:light">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
@@ -14,9 +14,10 @@
         <div class="title">
             <div class="open-tags">
                 <p class="tags">&lt;full-stack-developer&gt;</p>
-                <p class="h1">Alexander Konovalov</p>
+                <p class="h1">Aleksandr Konovalov</p>
                 <p class="tags">&lt;/full-stack-developer&gt;</p>
             </div>
+
             <div class="close-tags">
                 <span class="tags">&lt;full-stack-developer/&gt;</span>
             </div>
@@ -36,11 +37,11 @@
         <div class="card" id="about">
             <h1>&lt;About Me /&gt;</h1>
             <div class="card-description">
-                <div>My name is Alexander Konovalov</div>
+                <!--<div>My name is Alexander Konovalov</div>-->
                 <div><span class="infoNumbers" id="ye">27</span> years, Moscow</div>
                 <div><span class="infoNumbers" id="it">&gt;5</span> years in IT</div>
-                <i>TODO: </i>My notes and articles about development process
-                <i>FEATURE: </i>Github latest commits
+                <!--<i>TODO: My notes and articles about development process</i>-->
+                <!--<i>TODO: Github latest commits</i>-->
             </div>
         </div>
 
@@ -53,13 +54,16 @@
                     <ul>
                         <li>Funny JS #1 - Preview & Link</li>
                         <li>Funny JS #2 - Preview & Link</li>
+                        <li>JS: Basics</li>
+                        <li>Node JS + MongoDB</li>
+                        <li>Intro to HTML & CSS</li>
+                        <li>Advanced CSS</li>
                     </ul>
                 </div>
                 <div>
                     For Beginners:
                     <ul>
-                        <li>JS: Basics</li>
-                        <li>Node JS + MongoDB</li>
+
                     </ul>
                 </div>
             </div>
@@ -73,14 +77,18 @@
         </div>
 
         <div class="card" id="opensource">
-            <h1>&lt;Open Source /&gt;</h1>
+            <h1>&lt;Public Projects /&gt;</h1>
             <div class="card-description">
                 <ul>
+                    <li>detmir.ru</li>
+                    <li>beru.ru</li>
+                    <li>mylingua.online</li>
+                    <li>gosuslugi.ru</li>
                     <li>text-to-learn</li>
                     <li>smart-links</li>
-                    <li>smm-bot</li>
+                    <!--<li>smm-bot</li>-->
                     <li>slides-and-forms</li>
-                    <li>photo-location</li>
+                    <!--<li>photo-location</li>-->
                 </ul>
             </div>
         </div>
@@ -115,7 +123,7 @@
                 <a href="https://github.com/elcodabra"><i class="fa fa-github"></i></a>
             </div>
             <div class="footer-left">
-                <p>Alexander Konovalov © 2017</p>
+                <p>Aleksandr Konovalov © 2017-<span id="cy">-</span></p>
             </div>
         </div>
     </footer>
@@ -123,6 +131,7 @@
     <script>
         document.getElementById('ye').innerText = (+new Date().getFullYear() - 1988).toString();
         document.getElementById('it').innerText = '>' + (+new Date().getFullYear() - 2008 - 1).toString();
+        document.getElementById('cy').innerText = new Date().getFullYear().toString();
     </script>
     <script src="./js/skills.js" type="text/javascript" charset="utf-8-8"></script>
     <script src="./js/experience.js" type="text/javascript" charset="utf-8-8"></script>
