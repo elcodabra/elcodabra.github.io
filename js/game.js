@@ -10,14 +10,15 @@
     HEIGHT: 400,
   }
   const styles = {
+    backgroundColor: '#fff',
     text: {
       fontFamily: 'Roboto',
       // fontStyle: 'bold',
       fontSize: 20,
-      backgroundColor: 'black',
+      backgroundColor: '#000',
       // stroke: 'red',
       // strokeThickness: 2,
-      padding: { x: 1, y: 5 }
+      padding: { x: 2, y: 5 }
     },
   }
   const gameState = {
@@ -28,13 +29,38 @@
     score: 0,
     gameOver: false,
   }
+  const config = {
+    type: Phaser.AUTO,
+    width: CANVAS.WIDTH,
+    height: CANVAS.HEIGHT,
+    backgroundColor: styles.backgroundColor,
+    physics: {
+      default: 'arcade',
+      arcade: {
+        x: 0,
+        y: 0,
+        width: CANVAS.LENGTH - CANVAS.WIDTH / 2,
+        height: CANVAS.HEIGHT,
+        gravity: {
+          y: 400
+        },
+        debug: false,
+      },
+    },
+    scene: {
+      preload,
+      create,
+      update,
+    }
+  }
+
+  const game = new Phaser.Game(config)
 
   function preload() {
     this.load.image('codey', URLS.PLAYER)
     this.load.svg('barrier', URLS.BARRIER, {width: 40, height: 40})
     this.load.spritesheet('failure', URLS.FAILURE_IMG, { frameWidth: 480, frameHeight: 270 })
   }
-
   function create() {
     this.cameras.main.setBounds(0, 0, CANVAS.LENGTH, CANVAS.HEIGHT)
     gameState.cursors = this.input.keyboard.createCursorKeys()
@@ -75,8 +101,6 @@
 
     // The player and its settings
     gameState.player = this.physics.add.sprite(CANVAS.WIDTH / 2, CANVAS.HEIGHT / 2, 'codey')
-
-    //  Player physics properties. Give the little guy a slight bounce.
     gameState.player.setBounce(0.7)
     gameState.player.setCollideWorldBounds(true)
 
@@ -103,7 +127,6 @@
       this.scene.restart()
     })
   }
-
   function update() {
     if (gameState.gameOver) {
       gameState.restartButton.setVisible(true)
@@ -134,7 +157,6 @@
     gameState.restartButton.x = player.x - gameState.restartButton.width / 2
     gameState.gameOver = true
   }
-
   function collectStar (player, star) {
     star.disableBody(true, true);
     player.setSize(player.width, player.height + 1)
@@ -143,31 +165,4 @@
     gameState.score += 1
     gameState.scoreText.setText('Score:' + gameState.score)
   }
-
-  const config = {
-    type: Phaser.AUTO,
-    width: CANVAS.WIDTH,
-    height: CANVAS.HEIGHT,
-    backgroundColor: '0xdda0dd',
-    physics: {
-      default: 'arcade',
-      arcade: {
-        x: 0,
-        y: 0,
-        width: CANVAS.LENGTH - CANVAS.WIDTH / 2,
-        height: CANVAS.HEIGHT,
-        gravity: {
-          y: 400
-        },
-        debug: true,
-      },
-    },
-    scene: {
-      preload,
-      create,
-      update,
-    }
-  }
-
-  const game = new Phaser.Game(config)
 })()
