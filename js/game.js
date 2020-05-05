@@ -1,16 +1,17 @@
 ;(function(){
-  const gameState = {
-    CANVAS_WIDTH: 800,
-    CANVAS_LENGTH: 3600,
-    CANVAS_HEIGHT: 400,
-    BADGES_COUNT: 10,
-    BARRIERS_COUNT: 5,
-    jump: 5,
-    velocity: 1,
-    score: 0,
-    gameOver: false,
-    textStyle: {
-      fontFamily: 'Helvetica',
+  const URLS = {
+    PLAYER: 'https://s3.amazonaws.com/codecademy-content/courses/learn-phaser/codey.png',
+    BARRIER: 'https://image.flaticon.com/icons/svg/1666/1666553.svg',
+    FAILURE_IMG: 'images/failure.png',
+  }
+  const CANVAS = {
+    WIDTH: 800,
+    LENGTH: 3600,
+    HEIGHT: 400,
+  }
+  const styles = {
+    text: {
+      fontFamily: 'Roboto',
       // fontStyle: 'bold',
       fontSize: 20,
       backgroundColor: 'black',
@@ -19,15 +20,23 @@
       padding: { x: 1, y: 5 }
     },
   }
+  const gameState = {
+    BADGES_COUNT: 10,
+    BARRIERS_COUNT: 5,
+    jump: 5,
+    velocity: 1,
+    score: 0,
+    gameOver: false,
+  }
 
   function preload() {
-    this.load.image('codey', 'https://s3.amazonaws.com/codecademy-content/courses/learn-phaser/codey.png')
-    this.load.svg('barrier', 'https://image.flaticon.com/icons/svg/1666/1666553.svg', {width: 40, height: 40})
-    this.load.spritesheet('failure', 'images/failure.png', { frameWidth: 480, frameHeight: 270 })
+    this.load.image('codey', URLS.PLAYER)
+    this.load.svg('barrier', URLS.BARRIER, {width: 40, height: 40})
+    this.load.spritesheet('failure', URLS.FAILURE_IMG, { frameWidth: 480, frameHeight: 270 })
   }
 
   function create() {
-    this.cameras.main.setBounds(0, 0, gameState.CANVAS_LENGTH, gameState.CANVAS_HEIGHT)
+    this.cameras.main.setBounds(0, 0, CANVAS.LENGTH, CANVAS.HEIGHT)
     gameState.cursors = this.input.keyboard.createCursorKeys()
 
     const graphics = this.add.graphics()
@@ -36,36 +45,36 @@
     graphics.generateTexture("star", 40, 40)
     graphics.destroy()
 
-    const stepX = (gameState.CANVAS_LENGTH - 2 * gameState.CANVAS_WIDTH) / gameState.BADGES_COUNT
+    const stepX = (CANVAS.LENGTH - 2 * CANVAS.WIDTH) / gameState.BADGES_COUNT
     // gameState.items = this.physics.add.staticGroup({
     gameState.items = this.physics.add.group({
       key: 'star',
       allowGravity: false,
       repeat: gameState.BADGES_COUNT,
-      setXY: { x: gameState.CANVAS_WIDTH, y: gameState.CANVAS_HEIGHT, stepX }, // stepY
+      setXY: { x: CANVAS.WIDTH, y: CANVAS.HEIGHT, stepX }, // stepY
     })
     gameState.items.children.iterate(function (child) {
       // child.body.setBoundsRectangle(rect)
       child.x = child.x + Phaser.Math.Between(50, stepX)
-      child.y = child.y - Phaser.Math.Between(50, gameState.CANVAS_HEIGHT)
+      child.y = child.y - Phaser.Math.Between(50, CANVAS.HEIGHT)
     })
 
-    const stepXBarrier = (gameState.CANVAS_LENGTH - 2 * gameState.CANVAS_WIDTH) / gameState.BARRIERS_COUNT
+    const stepXBarrier = (CANVAS.LENGTH - 2 * CANVAS.WIDTH) / gameState.BARRIERS_COUNT
 
     gameState.barriers = this.physics.add.group({
       key: 'barrier',
       allowGravity: false,
       repeat: gameState.BARRIERS_COUNT,
-      setXY: { x: gameState.CANVAS_WIDTH, y: gameState.CANVAS_HEIGHT, stepX: stepXBarrier }, // stepY
+      setXY: { x: CANVAS.WIDTH, y: CANVAS.HEIGHT, stepX: stepXBarrier }, // stepY
     })
     gameState.barriers.children.iterate(function (child) {
       //child.body.setAllowGravity(false)
       child.x = child.x + Phaser.Math.Between(50, stepX)
-      child.y = child.y - Phaser.Math.Between(50, gameState.CANVAS_HEIGHT)
+      child.y = child.y - Phaser.Math.Between(50, CANVAS.HEIGHT)
     })
 
     // The player and its settings
-    gameState.player = this.physics.add.sprite(gameState.CANVAS_WIDTH / 2, gameState.CANVAS_HEIGHT / 2, 'codey')
+    gameState.player = this.physics.add.sprite(CANVAS.WIDTH / 2, CANVAS.HEIGHT / 2, 'codey')
 
     //  Player physics properties. Give the little guy a slight bounce.
     gameState.player.setBounce(0.7)
@@ -81,11 +90,11 @@
       repeat: -1,
     })
 
-    gameState.sprite = this.add.sprite(0, gameState.CANVAS_HEIGHT / 2, 'failure').setDisplaySize(gameState.CANVAS_WIDTH, gameState.CANVAS_HEIGHT) // .setOrigin(0)
+    gameState.sprite = this.add.sprite(0, CANVAS.HEIGHT / 2, 'failure').setDisplaySize(CANVAS.WIDTH, CANVAS.HEIGHT) // .setOrigin(0)
     gameState.sprite.setVisible(false)
 
-    gameState.scoreText = this.add.text(10, 10, 'Score:' + gameState.score, gameState.textStyle)
-    gameState.restartButton = this.add.text(0, gameState.CANVAS_HEIGHT / 2, 'Restart', gameState.textStyle)
+    gameState.scoreText = this.add.text(10, 10, 'Score:' + gameState.score, styles.text)
+    gameState.restartButton = this.add.text(0, CANVAS.HEIGHT / 2, 'Restart', styles.text)
     gameState.restartButton.setInteractive()
     gameState.restartButton.setVisible(false)
     gameState.restartButton.on('pointerup', () => {
@@ -137,16 +146,16 @@
 
   const config = {
     type: Phaser.AUTO,
-    width: gameState.CANVAS_WIDTH,
-    height: gameState.CANVAS_HEIGHT,
+    width: CANVAS.WIDTH,
+    height: CANVAS.HEIGHT,
     backgroundColor: '0xdda0dd',
     physics: {
       default: 'arcade',
       arcade: {
         x: 0,
         y: 0,
-        width: gameState.CANVAS_LENGTH - gameState.CANVAS_WIDTH / 2,
-        height: gameState.CANVAS_HEIGHT,
+        width: CANVAS.LENGTH - CANVAS.WIDTH / 2,
+        height: CANVAS.HEIGHT,
         gravity: {
           y: 400
         },
