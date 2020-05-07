@@ -1,16 +1,31 @@
 ;(function(){
+  const STACK = ['HTML', 'CSS', 'JS', 'NPM', 'SASS', 'BEM', 'GIT', 'SEO', 'DOM', 'AJAX', 'Webpack', 'React', 'Angular', 'Redux', 'Jest', 'TS', 'Next', 'PWA', 'WS', 'SW']
   const URLS = {
-    PLAYER: 'https://s3.amazonaws.com/codecademy-content/courses/learn-phaser/codey.png',
-    BARRIER: 'https://image.flaticon.com/icons/svg/1666/1666553.svg',
+    PLAYER: 'images/codey.png',
+    BARRIER: 'images/deadline.svg',
     FAILURE_IMG: 'images/failure.png',
+    BACKGROUND_IMG: 'images/background.svg',
+    // BACKGROUND_IMG: 'images/scene.png',
   }
   const CANVAS = {
     WIDTH: 800,
-    LENGTH: 3600,
     HEIGHT: 400,
+    LENGTH: STACK.length * 300,
   }
   const styles = {
-    backgroundColor: '#fff',
+    root: {
+      backgroundColor: '#fff',
+    },
+    item: {
+      fontFamily: 'Roboto',
+      color: '#ffffff',
+      backgroundColor: '#7e0cf5',
+      align: 'center',
+      fontSize: 20,
+      fixedWidth: 85,
+      fixedHeight: 35,
+      padding: { x: 2, y: 5 },
+    },
     text: {
       fontFamily: 'Roboto',
       // fontStyle: 'bold',
@@ -18,12 +33,12 @@
       backgroundColor: '#000',
       // stroke: 'red',
       // strokeThickness: 2,
-      padding: { x: 2, y: 5 }
+      padding: { x: 2, y: 5 },
     },
   }
   const gameState = {
-    BADGES_COUNT: 10,
-    BARRIERS_COUNT: 5,
+    BADGES_COUNT: STACK.length,
+    BARRIERS_COUNT: 10,
     jump: 5,
     velocity: 1,
     score: 0,
@@ -33,7 +48,7 @@
     type: Phaser.AUTO,
     width: CANVAS.WIDTH,
     height: CANVAS.HEIGHT,
-    backgroundColor: styles.backgroundColor,
+    backgroundColor: styles.root.backgroundColor,
     physics: {
       default: 'arcade',
       arcade: {
@@ -57,18 +72,22 @@
   const game = new Phaser.Game(config)
 
   function preload() {
+    this.load.svg('background', URLS.BACKGROUND_IMG, { width: 550, height: 80 })
     this.load.image('codey', URLS.PLAYER)
-    this.load.svg('barrier', URLS.BARRIER, {width: 40, height: 40})
+    this.load.svg('barrier', URLS.BARRIER, { width: 40, height: 40 })
     this.load.spritesheet('failure', URLS.FAILURE_IMG, { frameWidth: 480, frameHeight: 270 })
   }
   function create() {
     this.cameras.main.setBounds(0, 0, CANVAS.LENGTH, CANVAS.HEIGHT)
     gameState.cursors = this.input.keyboard.createCursorKeys()
 
+    // background
+    this.add.tileSprite(200, CANVAS.HEIGHT + 20, 2 * CANVAS.LENGTH, 200, 'background')
+
     const graphics = this.add.graphics()
-    graphics.fillStyle(0x6666ff)
-    graphics.fillRect(0, 0, 40, 40)
-    graphics.generateTexture("star", 40, 40)
+    // graphics.fillStyle(styles.item.backgroundColor)
+    graphics.fillRect(0, 0, styles.item.fixedWidth, styles.item.fixedHeight)
+    graphics.generateTexture("star", styles.item.fixedWidth, styles.item.fixedHeight)
     graphics.destroy()
 
     const stepX = (CANVAS.LENGTH - 2 * CANVAS.WIDTH) / gameState.BADGES_COUNT
@@ -76,13 +95,16 @@
     gameState.items = this.physics.add.group({
       key: 'star',
       allowGravity: false,
-      repeat: gameState.BADGES_COUNT,
+      repeat: gameState.BADGES_COUNT - 1,
       setXY: { x: CANVAS.WIDTH, y: CANVAS.HEIGHT, stepX }, // stepY
     })
-    gameState.items.children.iterate(function (child) {
+    gameState.skills = []
+    gameState.items.children.iterate((child, index) => {
       // child.body.setBoundsRectangle(rect)
       child.x = child.x + Phaser.Math.Between(50, stepX)
-      child.y = child.y - Phaser.Math.Between(50, CANVAS.HEIGHT)
+      child.y = child.y - Phaser.Math.Between(50, CANVAS.HEIGHT - styles.item.fixedHeight)
+      child.setData('index', index)
+      gameState.skills.push(this.add.text(child.x - styles.item.fixedWidth / 2 + 5, child.y - 13, STACK[index], styles.item))
     })
 
     const stepXBarrier = (CANVAS.LENGTH - 2 * CANVAS.WIDTH) / gameState.BARRIERS_COUNT
@@ -93,7 +115,7 @@
       repeat: gameState.BARRIERS_COUNT,
       setXY: { x: CANVAS.WIDTH, y: CANVAS.HEIGHT, stepX: stepXBarrier }, // stepY
     })
-    gameState.barriers.children.iterate(function (child) {
+    gameState.barriers.children.iterate(child => {
       //child.body.setAllowGravity(false)
       child.x = child.x + Phaser.Math.Between(50, stepX)
       child.y = child.y - Phaser.Math.Between(50, CANVAS.HEIGHT)
@@ -158,7 +180,8 @@
     gameState.gameOver = true
   }
   function collectStar (player, star) {
-    star.disableBody(true, true);
+    gameState.skills[star.getData('index')].setVisible(false)
+    star.disableBody(true, true)
     player.setSize(player.width, player.height + 1)
 
     //  Add and update the score
