@@ -11,6 +11,11 @@
     HEIGHT: 400,
     LENGTH: STACK.length * 300,
   }
+  const GAME = {
+    JUMP: 5,
+    VELOCITY: 1,
+    SCORE: 0,
+  }
   const styles = {
     root: {
       backgroundColor: '#fff',
@@ -38,9 +43,10 @@
   const gameState = {
     BADGES_COUNT: STACK.length,
     BARRIERS_COUNT: 10,
-    jump: 5,
-    velocity: 1,
-    score: 0,
+    jump: GAME.JUMP,
+    velocity: GAME.VELOCITY,
+    score: GAME.SCORE,
+    playerScale: 1,
     gameOver: false,
   }
   const config = {
@@ -73,7 +79,7 @@
   function preload() {
     this.load.svg('background', URLS.BACKGROUND_IMG, { width: 800, height: 100 })
     this.load.image('codey', URLS.PLAYER)
-    this.load.spritesheet('barrier', URLS.BARRIER, { frameWidth: 44.2, frameHeight: 69 })
+    this.load.spritesheet('barrier', URLS.BARRIER, { frameWidth: 88, frameHeight: 136 })
     this.load.spritesheet('failure', URLS.FAILURE_IMG, { frameWidth: 480, frameHeight: 270 })
   }
   function create() {
@@ -119,6 +125,7 @@
       key: 'barrier',
       allowGravity: false,
       repeat: gameState.BARRIERS_COUNT,
+      setScale: { x: 0.5, y: 0.5 },
       setXY: { x: CANVAS.WIDTH, y: CANVAS.HEIGHT, stepX: stepXBarrier }, // stepY
     })
     gameState.barriers.children.iterate(child => {
@@ -152,7 +159,10 @@
     gameState.restartButton.setVisible(false)
     gameState.restartButton.on('pointerup', () => {
       gameState.gameOver = false
-      gameState.score = 0
+      gameState.score = GAME.SCORE
+      gameState.jump = GAME.JUMP
+      gameState.velocity = GAME.VELOCITY
+      gameState.playerScale = 1
       this.scene.restart()
     })
   }
@@ -171,6 +181,7 @@
       gameState.player.y -= gameState.jump
     }
 
+    gameState.velocity += 0.001
     gameState.player.x += gameState.velocity
     gameState.scoreText.x += gameState.velocity
     this.cameras.main.scrollX += gameState.velocity
@@ -189,7 +200,8 @@
   function collectStar (player, star) {
     gameState.skills[star.getData('index')].setVisible(false)
     star.disableBody(true, true)
-    player.setSize(player.width, player.height + 1)
+    gameState.playerScale += 0.05
+    player.setScale(gameState.playerScale)
 
     //  Add and update the score
     gameState.score += 1
