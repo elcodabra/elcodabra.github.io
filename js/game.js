@@ -2,10 +2,9 @@
   const STACK = ['HTML', 'CSS', 'JS', 'NPM', 'SASS', 'BEM', 'GIT', 'SEO', 'DOM', 'AJAX', 'Webpack', 'React', 'Angular', 'Redux', 'Jest', 'TS', 'Next', 'PWA', 'WS', 'SW']
   const URLS = {
     PLAYER: 'images/codey.png',
-    BARRIER: 'images/deadline.svg',
+    BARRIER: 'images/deadline_sprite.png',
     FAILURE_IMG: 'images/failure.png',
-    BACKGROUND_IMG: 'images/background.svg',
-    // BACKGROUND_IMG: 'images/scene.png',
+    BACKGROUND_IMG: 'images/scene.svg',
   }
   const CANVAS = {
     WIDTH: 800,
@@ -72,9 +71,9 @@
   const game = new Phaser.Game(config)
 
   function preload() {
-    this.load.svg('background', URLS.BACKGROUND_IMG, { width: 550, height: 80 })
+    this.load.svg('background', URLS.BACKGROUND_IMG, { width: 800, height: 100 })
     this.load.image('codey', URLS.PLAYER)
-    this.load.svg('barrier', URLS.BARRIER, { width: 40, height: 40 })
+    this.load.spritesheet('barrier', URLS.BARRIER, { frameWidth: 44.2, frameHeight: 69 })
     this.load.spritesheet('failure', URLS.FAILURE_IMG, { frameWidth: 480, frameHeight: 270 })
   }
   function create() {
@@ -109,6 +108,13 @@
 
     const stepXBarrier = (CANVAS.LENGTH - 2 * CANVAS.WIDTH) / gameState.BARRIERS_COUNT
 
+    this.anims.create({
+      key: 'tickDeadline',
+      frames: this.anims.generateFrameNumbers('barrier', { start: 0, end: 4 }),
+      frameRate: 5,
+      repeat: -1
+    })
+
     gameState.barriers = this.physics.add.group({
       key: 'barrier',
       allowGravity: false,
@@ -119,6 +125,7 @@
       //child.body.setAllowGravity(false)
       child.x = child.x + Phaser.Math.Between(50, stepX)
       child.y = child.y - Phaser.Math.Between(50, CANVAS.HEIGHT)
+      child.play('tickDeadline')
     })
 
     // The player and its settings
