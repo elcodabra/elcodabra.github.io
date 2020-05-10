@@ -212,7 +212,7 @@
   function collectStar (player, star) {
     gameState.skills[star.getData('index')].setVisible(false)
     star.disableBody(true, true)
-    gameState.playerScale += 0.05
+    gameState.playerScale += 0.01
     player.setScale(gameState.playerScale)
 
     //  Add and update the score
