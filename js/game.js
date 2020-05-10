@@ -39,6 +39,19 @@
       // strokeThickness: 2,
       padding: { x: 2, y: 5 },
     },
+    button: {
+      fontFamily: 'Roboto',
+      fontSize: 20,
+      fontStyle: 'bold',
+      backgroundColor: '#7e0cf5',
+      // stroke: '#000',
+      // strokeThickness: 1,
+      padding: { x: 10, y: 10 },
+      fixedWidth: 200,
+      // fixedHeight: 50,
+      align: 'center',
+      resolution: 1,
+    },
   }
   const gameState = {
     BADGES_COUNT: STACK.length,
@@ -77,6 +90,31 @@
 
   const game = new Phaser.Game(config)
 
+  function createButton(x, y, text, visible, onClick) {
+    const scale = 1.2
+    const button = this.add.text(x || (CANVAS.WIDTH / 2 - styles.button.fixedWidth / 2), y || (CANVAS.HEIGHT / 2 - 20), text, styles.button)
+      .setInteractive({ useHandCursor: true })
+      .setVisible(visible)
+      .on('pointerup', function() {
+        this.setAlpha(0.5)
+        onClick()
+      })
+      .on('pointerover', function() {
+        this
+          .setScale(scale)
+          .setResolution(scale)
+          .setX(this.x - this.width * (scale - 1) / 2)
+      })
+      .on('pointerout', function() {
+        this
+          .setScale(1)
+          .setResolution(1)
+          .setX(this.x + this.width * (scale - 1) / 2)
+      })
+
+    return button
+  }
+
   function preload() {
     this.load.svg('background', URLS.BACKGROUND_IMG, { width: 800, height: 100 })
     this.load.image('codey', URLS.PLAYER)
@@ -84,6 +122,8 @@
     this.load.spritesheet('failure', URLS.FAILURE_IMG, { frameWidth: 480, frameHeight: 270 })
   }
   function create() {
+    createButton = createButton.bind(this)
+
     this.cameras.main.setBounds(0, 0, CANVAS.LENGTH, CANVAS.HEIGHT)
     gameState.cursors = this.input.keyboard.createCursorKeys()
 
@@ -91,11 +131,12 @@
     this.add.tileSprite(200, CANVAS.HEIGHT + 20, 2 * CANVAS.LENGTH, 200, 'background')
 
     const graphics = this.add.graphics()
-    // graphics.fillStyle(styles.item.backgroundColor)
-    graphics.fillRect(0, 0, styles.item.fixedWidth, styles.item.fixedHeight)
-    graphics.generateTexture("star", styles.item.fixedWidth, styles.item.fixedHeight)
-    graphics.destroy()
+      // .fillStyle(styles.item.backgroundColor)
+      .fillRect(0, 0, styles.item.fixedWidth, styles.item.fixedHeight)
+      .generateTexture("star", styles.item.fixedWidth, styles.item.fixedHeight)
+      .destroy()
 
+    gameState.skills = []
     const stepX = (CANVAS.LENGTH - 2 * CANVAS.WIDTH) / gameState.BADGES_COUNT
     // gameState.items = this.physics.add.staticGroup({
     gameState.items = this.physics.add.group({
@@ -104,7 +145,6 @@
       repeat: gameState.BADGES_COUNT - 1,
       setXY: { x: CANVAS.WIDTH, y: CANVAS.HEIGHT, stepX }, // stepY
     })
-    gameState.skills = []
     gameState.items.children.iterate((child, index) => {
       // child.body.setBoundsRectangle(rect)
       child.x = child.x + Phaser.Math.Between(50, stepX)
@@ -138,8 +178,8 @@
 
     // The player and its settings
     gameState.player = this.physics.add.sprite(CANVAS.WIDTH / 2, CANVAS.HEIGHT / 2, 'codey')
-    gameState.player.setBounce(0.7)
-    gameState.player.setCollideWorldBounds(true)
+      .setBounce(0.7)
+      .setCollideWorldBounds(true)
 
     this.physics.add.overlap(gameState.player, gameState.items, collectStar, null, this)
     this.physics.add.overlap(gameState.player, gameState.barriers, collectBarrier, null, this)
@@ -152,22 +192,16 @@
     })
 
     gameState.sprite = this.add.sprite(0, CANVAS.HEIGHT / 2, 'failure').setDisplaySize(CANVAS.WIDTH, CANVAS.HEIGHT) // .setOrigin(0)
-    gameState.sprite.setVisible(false)
+      .setVisible(false)
 
     gameState.scoreText = this.add.text(10, 10, 'Score:' + gameState.score, styles.text)
 
-    gameState.startButton = this.add.text(CANVAS.WIDTH / 2, CANVAS.HEIGHT / 2, 'Start', styles.text)
-    gameState.startButton.setInteractive()
-    gameState.startButton.setVisible(gameState.paused)
-    gameState.startButton.on('pointerup', () => {
+    gameState.startButton = createButton(false, false, 'START', gameState.paused, () => {
       gameState.paused = false
       gameState.startButton.setVisible(false)
     })
 
-    gameState.restartButton = this.add.text(0, CANVAS.HEIGHT / 2, 'Restart', styles.text)
-    gameState.restartButton.setInteractive()
-    gameState.restartButton.setVisible(false)
-    gameState.restartButton.on('pointerup', () => {
+    gameState.restartButton = createButton(false, false, 'Restart', false, () => {
       gameState.gameOver = false
       gameState.score = GAME.SCORE
       gameState.jump = GAME.JUMP
@@ -176,6 +210,7 @@
       this.scene.restart()
     })
   }
+
   function update() {
     if (!gameState.paused && !gameState.gameOver) {
       gameState.velocity += 0.001
@@ -190,8 +225,10 @@
       return
     }
     if (gameState.player.body.onWall()) {
-      gameState.restartButton.setText('Success! Restart?')
-      gameState.restartButton.x = gameState.player.x - gameState.restartButton.width / 2
+      gameState.restartButton
+        .setText('Success! Restart?')
+        .setX(gameState.player.x - gameState.restartButton.width / 2)
+
       gameState.gameOver = true
     }
     if (gameState.cursors.space.isDown) {
@@ -201,12 +238,16 @@
 
   function collectBarrier (player, barrier) {
     //  Show the whole animation sheet
-    gameState.sprite.x = player.x //  - gameState.sprite.width / 2
-    gameState.sprite.anims.play('walk', true)
-    gameState.sprite.setVisible(true)
+    gameState.sprite
+      .setX(player.x) //  - gameState.sprite.width / 2
+      .anims.play('walk', true)
+      .setVisible(true)
 
-    gameState.restartButton.setText('Deadline! Restart?')
-    gameState.restartButton.x = player.x - gameState.restartButton.width / 2
+    gameState.restartButton
+      .setText('Deadline! Restart?')
+      .setX(player.x - gameState.restartButton.width / 2)
+      .setVisible(true)
+
     gameState.gameOver = true
   }
   function collectStar (player, star) {
