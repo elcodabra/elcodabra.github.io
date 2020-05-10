@@ -48,6 +48,7 @@
     score: GAME.SCORE,
     playerScale: 1,
     gameOver: false,
+    paused: true,
   }
   const config = {
     type: Phaser.AUTO,
@@ -154,6 +155,15 @@
     gameState.sprite.setVisible(false)
 
     gameState.scoreText = this.add.text(10, 10, 'Score:' + gameState.score, styles.text)
+
+    gameState.startButton = this.add.text(CANVAS.WIDTH / 2, CANVAS.HEIGHT / 2, 'Start', styles.text)
+    gameState.startButton.setInteractive()
+    gameState.startButton.setVisible(gameState.paused)
+    gameState.startButton.on('pointerup', () => {
+      gameState.paused = false
+      gameState.startButton.setVisible(false)
+    })
+
     gameState.restartButton = this.add.text(0, CANVAS.HEIGHT / 2, 'Restart', styles.text)
     gameState.restartButton.setInteractive()
     gameState.restartButton.setVisible(false)
@@ -167,6 +177,13 @@
     })
   }
   function update() {
+    if (!gameState.paused && !gameState.gameOver) {
+      gameState.velocity += 0.001
+      gameState.player.x += gameState.velocity
+      gameState.scoreText.x += gameState.velocity
+      this.cameras.main.scrollX += gameState.velocity
+    }
+
     if (gameState.gameOver) {
       gameState.restartButton.setVisible(true)
       // this.scene.pause() // this.scene.stop()
@@ -180,11 +197,6 @@
     if (gameState.cursors.space.isDown) {
       gameState.player.y -= gameState.jump
     }
-
-    gameState.velocity += 0.001
-    gameState.player.x += gameState.velocity
-    gameState.scoreText.x += gameState.velocity
-    this.cameras.main.scrollX += gameState.velocity
   }
 
   function collectBarrier (player, barrier) {
