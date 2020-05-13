@@ -119,7 +119,7 @@
     this.load.svg('background', URLS.BACKGROUND_IMG, { width: 800, height: 100 })
     this.load.image('codey', URLS.PLAYER)
     this.load.spritesheet('barrier', URLS.BARRIER, { frameWidth: 88, frameHeight: 136 })
-    this.load.spritesheet('failure', URLS.FAILURE_IMG, { frameWidth: 480, frameHeight: 270 })
+    // this.load.spritesheet('failure', URLS.FAILURE_IMG, { frameWidth: 480, frameHeight: 270 })
   }
   function create() {
     createButton = createButton.bind(this)
@@ -184,6 +184,7 @@
     this.physics.add.overlap(gameState.player, gameState.items, collectStar, null, this)
     this.physics.add.overlap(gameState.player, gameState.barriers, collectBarrier, null, this)
 
+    /*
     this.anims.create({
       key: 'walk',
       frames: this.anims.generateFrameNumbers('failure'),
@@ -191,8 +192,11 @@
       repeat: -1,
     })
 
-    gameState.sprite = this.add.sprite(0, CANVAS.HEIGHT / 2, 'failure').setDisplaySize(CANVAS.WIDTH, CANVAS.HEIGHT) // .setOrigin(0)
+    gameState.sprite = this.add.sprite(0, CANVAS.HEIGHT / 2, 'failure')
+      .setDisplaySize(CANVAS.WIDTH, CANVAS.HEIGHT)
       .setVisible(false)
+      // .setOrigin(0)
+    */
 
     gameState.scoreText = this.add.text(10, 10, 'Score:' + gameState.score, styles.text)
 
@@ -237,11 +241,12 @@
   }
 
   function collectBarrier (player, barrier) {
-    //  Show the whole animation sheet
+    /*
     gameState.sprite
       .setX(player.x) //  - gameState.sprite.width / 2
       .anims.play('walk', true)
       .setVisible(true)
+    */
 
     gameState.restartButton
       .setText('Deadline! Restart?')
