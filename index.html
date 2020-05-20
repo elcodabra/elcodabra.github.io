@@ -1,139 +1,52 @@
 <!DOCTYPE html>
 <html>
-<head lang="en">
+  <head lang="en">
     <meta charset="UTF-8">
-    <title>Aleksandr Konovalov / Full-Stack Developer</title>
-    <link rel="stylesheet" href="css/resume.css">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Nunito:light,normal|Montserrat|Roboto:light">
+    <title>Aleksandr Konovalov / Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-    <link rel="SHORTCUT ICON" href="images/beard-and-glasses.jpg">
-    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
-</head>
-<body>
-    <header>
-        <div class="title">
-            <div class="open-tags">
-                <p class="tags">&lt;full-stack-developer&gt;</p>
-                <p class="h1">Aleksandr Konovalov</p>
-                <p class="tags">&lt;/full-stack-developer&gt;</p>
-            </div>
-
-            <div class="close-tags">
-                <span class="tags">&lt;full-stack-developer/&gt;</span>
-            </div>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="images/icon-bit.png">
+  </head>
+  <body>
+    <section class="main">
+      <div class="content">
+        <div class="avatar">
+          <img class="avatar-icon" src="images/avatar.png" alt="avatar" />
+          <div class="contacts">
+            <a href="https://www.facebook.com/elcodabra"><i class="fa fa-facebook"></i></a>
+            <a href="https://twitter.com/elcodabra"><i class="fa fa-twitter"></i></a>
+            <a href="https://linkedin.com/in/elcodabra"><i class="fa fa-linkedin"></i></a>
+            <a href="https://github.com/elcodabra"><i class="fa fa-github"></i></a>
+          </div>
         </div>
-        <div class="header-limiter">
-            <ul>
-                <li><a href="#about">#about</a></li>
-                <li><a href="#courses">#courses</a></li>
-                <li><a href="#skills">#skills</a></li>
-                <li><a href="#opensource">#opensource</a></li>
-                <li><a href="#experience">#experience</a></li>
-                <!--<li><a href="#education">#education</a></li>-->
-            </ul>
-        </div>
-    </header>
-    <section class="main-content">
-        <div class="card" id="about">
-            <h1>&lt;About Me /&gt;</h1>
-            <div class="card-description">
-                <!--<div>My name is Alexander Konovalov</div>-->
-                <div><span class="infoNumbers" id="ye">27</span> years, Moscow</div>
-                <div><span class="infoNumbers" id="it">&gt;5</span> years in IT</div>
-                <!--<i>TODO: My notes and articles about development process</i>-->
-                <!--<i>TODO: Github latest commits</i>-->
+        <div class="description">
+          <h1>Hi! I’m <span class="colored">Aleksandr Konovalov</span></h1>
+          <div class="numbers">
+            <div class="numbers-item">
+              <span class="infoNumbers" id="ye">27</span>
+              <span>years old, Moscow</span>
             </div>
-        </div>
-
-        <div class="card" id="courses">
-            <h1>&lt;My Courses /&gt;</h1>
-            <div class="card-description">
-                Lectures with test and practice
-                <div>
-                    For Seniors:
-                    <ul>
-                        <li>Funny JS #1 - Preview & Link</li>
-                        <li>Funny JS #2 - Preview & Link</li>
-                        <li>JS: Basics</li>
-                        <li>Node JS + MongoDB</li>
-                        <li>Intro to HTML & CSS</li>
-                        <li>Advanced CSS</li>
-                    </ul>
-                </div>
-                <div>
-                    For Beginners:
-                    <ul>
-
-                    </ul>
-                </div>
+            <div class="numbers-item">
+              <span class="infoNumbers" id="it">&gt;5</span>
+              <span>years of software development</span>
             </div>
-        </div>
-
-        <div class="card" id="skills">
-            <h1>&lt;Skills /&gt;</h1>
-            <div class="card-description">
-                <div id="skillsChart"></div>
+            <div class="numbers-item">
+              <span class="infoNumbers" id="he">0</span>
+              <span>seconds you are here</span>
             </div>
+          </div>
         </div>
-
-        <div class="card" id="opensource">
-            <h1>&lt;Public Projects /&gt;</h1>
-            <div class="card-description">
-                <ul>
-                    <li>detmir.ru</li>
-                    <li>beru.ru</li>
-                    <li>mylingua.online</li>
-                    <li>gosuslugi.ru</li>
-                    <li>text-to-learn</li>
-                    <li>smart-links</li>
-                    <!--<li>smm-bot</li>-->
-                    <li>slides-and-forms</li>
-                    <!--<li>photo-location</li>-->
-                </ul>
-            </div>
-        </div>
-
-        <div class="card" id="experience">
-            <h1>&lt;Experience /&gt;</h1>
-            <div class="card-description">
-                <div id="expBubble"></div>
-                <h3 id="experience-note">Navigate to Experience</h3>
-            </div>
-        </div>
-
-        <!--
-        <div class="card" id="education">
-            <h1>&lt;Education /&gt;</h1>
-            <div class="card-description">
-                <ul>
-                    <li>University</li>
-                    <li>Courses</li>
-                    <li>Certificates</li>
-                </ul>
-            </div>
-        </div>
-        -->
+      </div>
     </section>
     <footer>
-        <div class="footer-limiter">
-            <div class="footer-right">
-                <a href="https://www.facebook.com/sancho.konovalov"><i class="fa fa-facebook"></i></a>
-                <a href="https://twitter.com/aleksandr_serg"><i class="fa fa-twitter"></i></a>
-                <a href="https://linkedin.com/in/s2dent"><i class="fa fa-linkedin"></i></a>
-                <a href="https://github.com/elcodabra"><i class="fa fa-github"></i></a>
-            </div>
-            <div class="footer-left">
-                <p>Aleksandr Konovalov © 2017-<span id="cy">-</span></p>
-            </div>
-        </div>
+      <p>Aleksandr Konovalov © 2017-<span id="cy">-</span></p>
     </footer>
 
     <script>
-        document.getElementById('ye').innerText = (+new Date().getFullYear() - 1988).toString();
-        document.getElementById('it').innerText = '>' + (+new Date().getFullYear() - 2008 - 1).toString();
-        document.getElementById('cy').innerText = new Date().getFullYear().toString();
+      document.getElementById('ye').innerText = (+new Date().getFullYear() - 1988).toString();
+      document.getElementById('it').innerText = '>' + (+new Date().getFullYear() - 2008 - 1).toString();
+      document.getElementById('cy').innerText = new Date().getFullYear().toString();
     </script>
-    <script src="./js/skills.js" type="text/javascript" charset="utf-8"></script>
-    <script src="./js/experience.js" type="text/javascript" charset="utf-8"></script>
-</body>
+  </body>
 </html>
