@@ -19,6 +19,7 @@
   const styles = {
     root: {
       backgroundColor: '#fff',
+      canvasStyle: 'position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);',
     },
     item: {
       fontFamily: 'Roboto',
@@ -68,6 +69,7 @@
     width: CANVAS.WIDTH,
     height: CANVAS.HEIGHT,
     backgroundColor: styles.root.backgroundColor,
+    canvasStyle: styles.root.canvasStyle,
     physics: {
       default: 'arcade',
       arcade: {
