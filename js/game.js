@@ -128,6 +128,7 @@
 
     this.cameras.main.setBounds(0, 0, CANVAS.LENGTH, CANVAS.HEIGHT)
     gameState.cursors = this.input.keyboard.createCursorKeys()
+    gameState.activePointer = this.input.activePointer
 
     // background
     this.add.tileSprite(200, CANVAS.HEIGHT + 20, 2 * CANVAS.LENGTH, 200, 'background')
@@ -237,7 +238,7 @@
 
       gameState.gameOver = true
     }
-    if (gameState.cursors.space.isDown) {
+    if (gameState.cursors.space.isDown || gameState.activePointer.isDown) {
       gameState.player.y -= gameState.jump
     }
   }
