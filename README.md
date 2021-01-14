@@ -1,3 +1,7 @@
+<p align="center">
+  <a href="https://elcodabra.github.io/"><img src="images/avatar.png" alt="Avatar"></img></a>
+</p>
+
 # Aleksandr Konovalov 
 About me – [https://elcodabra.github.io](https://elcodabra.github.io/)
 
