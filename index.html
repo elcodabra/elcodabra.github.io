@@ -47,6 +47,12 @@
       document.getElementById('ye').innerText = (+new Date().getFullYear() - 1988).toString();
       document.getElementById('it').innerText = '>' + (+new Date().getFullYear() - 2008 - 1).toString();
       document.getElementById('cy').innerText = new Date().getFullYear().toString();
+
+      const start = Date.now();
+      setInterval(function() {
+        const delta = Date.now() - start; // milliseconds elapsed since start
+        document.getElementById('he').innerText = Math.floor(delta / 1000); // in seconds
+      }, 1000); // update about every second
     </script>
   </body>
 </html>
